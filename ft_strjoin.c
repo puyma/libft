@@ -16,12 +16,16 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*strjoin;
+	size_t	len_s1;
+	size_t	len_s2;
 
-	strjoin = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	strjoin = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (strjoin == NULL)
 		return (0);
-	ft_bzero(strjoin, ft_strlen(s1) + ft_strlen(s2) + 1);
-	ft_strlcat(strjoin, s1, ft_strlen(s1) + 1);
-	ft_strlcat(strjoin, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
+	ft_bzero(strjoin, len_s1 + len_s2 + 1);
+	ft_strlcat(strjoin, s1, len_s1 + 1);
+	ft_strlcat(strjoin, s2, len_s1 + len_s2 + 1);
 	return (strjoin);
 }
