@@ -21,7 +21,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!*s1)
 	{
-		strtrim = malloc(sizeof(char));
+		strtrim = (char *) malloc(sizeof(char));
 		if (strtrim == NULL)
 			return (0);
 		*strtrim = '\0';
