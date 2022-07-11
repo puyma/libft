@@ -38,7 +38,7 @@ char	*ft_itoa(int n)
 	count_digits = ft_count_digits(n);
 	if (n <= 0 && n != -2147483648)
 		count_digits++;
-	itoa = malloc(sizeof(char) * count_digits + 1);
+	itoa = (char *) malloc(sizeof(char) * count_digits + 1);
 	if (itoa == NULL)
 		return (NULL);
 	ft_bzero(itoa, count_digits + 1);
