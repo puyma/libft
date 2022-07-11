@@ -56,7 +56,7 @@ char	**ft_split(char const *s, char c)
 	int		wrd;
 
 	wrd = ft_count_words(s, c);
-	split = malloc(sizeof(char *) * (wrd + 1));
+	split = (char **) malloc(sizeof(char *) * (wrd + 1));
 	if (split == NULL)
 		return (NULL);
 	start = ft_strlen(s) - 1;
