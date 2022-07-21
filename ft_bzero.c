@@ -16,3 +16,16 @@ void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
+
+// alternative, without using other functions
+//void	ft_bzero(void *s, size_t n)
+//{
+//	unsigned char	*src;
+//
+//	src = s;
+//	while (n)
+//	{
+//		*src++ = '\0';
+//		--n;
+//	}
+//}
