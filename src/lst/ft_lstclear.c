@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "lists.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
