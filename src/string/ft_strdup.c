@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
+#include "string.h"
 
 static char	*ft_strcpy(char *dst, const char *src)
 {

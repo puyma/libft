@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "string.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -18,14 +18,18 @@ void	ft_bzero(void *s, size_t n)
 }
 
 // alternative, without using other functions
-//void	ft_bzero(void *s, size_t n)
-//{
-//	unsigned char	*src;
-//
-//	src = s;
-//	while (n)
-//	{
-//		*src++ = '\0';
-//		--n;
-//	}
-//}
+/*
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*src;
+
+	src = s;
+	while (n)
+	{
+		*src++ = '\0';
+		--n;
+	}
+}
+
+*/
