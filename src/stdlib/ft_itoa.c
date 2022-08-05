@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlibft.h"
+#include "stdlib.h"
 
 static int	ft_count_digits(int n)
 {
