@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ctype.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:37:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/05/09 18:38:00 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/08/05 17:59:19 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/08/05 17:59:19 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ctype.h"
+#ifndef CTYPE_H
+# define CTYPE_H
 
-int	ft_isascii(int c)
-{
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
-}
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int     ft_isupper(int c);
+int     ft_islower(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+
+#endif /* ctype.h */
