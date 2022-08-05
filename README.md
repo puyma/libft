@@ -1,2 +1,2 @@
 # 42-libft
-Custom stdlib implementation.
+stdlib implementation.
