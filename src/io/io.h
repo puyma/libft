@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 11:51:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/05/21 12:22:43 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/08/05 18:04:05 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/08/05 18:04:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "io.h"
+#ifndef IO_H
+# define IO_H
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	while (*s)
-		ft_putchar_fd(*s++, fd);
-}
+#include <unistd.h>
+
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+
+#endif /* io.h */
