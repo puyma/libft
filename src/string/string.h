@@ -13,7 +13,7 @@
 #ifndef STRING_H
 # define STRING_H
 
-#include <stdlib.h> /* malloc, free, size_t */
+# include <stdlib.h> /* malloc, free, size_t */
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t len);

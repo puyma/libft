@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STDLIBFT_H
-# define STDLIBFT_H
+#ifndef STDLIB_H
+# define STDLIB_H
 
-#include <stdlib.h> /* malloc */
+# include <stdlib.h> /* malloc */
 
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
 
-#endif /* stdlibft.h */
+#endif /* stdlib.h */

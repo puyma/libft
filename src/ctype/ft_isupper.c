@@ -18,4 +18,3 @@ int	ft_isupper(int c)
 		return (1);
 	return (0);
 }
-
