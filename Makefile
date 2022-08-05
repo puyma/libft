@@ -50,7 +50,7 @@ BONUS_FILES	:= $(SRC_FILES)\
 			   ft_lstiter.c\
 			   ft_lstmap.c
 
-INCLUDES	:= -I include/
+INCLUDES	:= -I $(SRC_DIR)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
