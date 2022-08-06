@@ -13,6 +13,7 @@
 #ifndef STDLIB_H
 # define STDLIB_H
 
+# include "../string/string.h"
 # include <stdlib.h> /* malloc */
 
 int		ft_atoi(const char *str);
