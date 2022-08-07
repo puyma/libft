@@ -7,6 +7,7 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 - [The Pitchfork Layout (PFL)](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs)
 <!-- https://git.42l.fr/pohl/libft -->
 <!-- https://git.42l.fr/jorun/superlibft -->
+<!-- https://github.com/thdelmas/Libft -->
 
 ## Pendent
 - [makefile-that-places-object-files-into-an-alternate-directory-bin](https://codereview.stackexchange.com/questions/74136/makefile-that-places-object-files-into-an-alternate-directory-bin)
