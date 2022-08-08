@@ -2,10 +2,10 @@
 Implementació de `libc`. Source files ordenats més o menys en categories en funció de com es troben originalment en algunes implementacions de `libc`.
 
 ![42 Unlicense badge](https://img.shields.io/badge/license-42%20Unlicense-green)
-![printf badge](https://img.shields.io/badge/printf-not%20included-red)
+![printf badge](https://img.shields.io/badge/printf-included-orange)
 ![get next line badge](https://img.shields.io/badge/get%20next%20line-not%20included-red)
 
-## Referencies
+## Referències
 - [stdlib.guide](https://stdlib.guide)
 - [Apple Open Source Libc](https://github.com/apple-opensource/Libc)
 - [The Pitchfork Layout (PFL)](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs)

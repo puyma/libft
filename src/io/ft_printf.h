@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/06/13 10:29:18 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/07/18 16:26:35 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h> /* malloc, free, size_t */
+# include <stdarg.h>
+# include "../libft.h"
+# include "io.h"
+# include "../stdlib/stdlib.h"
+# include "../math/math.h"
 
-# include "ctype/ctype.h"
-# include "io/io.h"
-# include "lst/lists.h"
-# include "math/math.h"
-# include "stdlib/stdlib.h"
-# include "string/string.h"
+typedef struct s_printout
+{
+	int	n_written;
+}		t_printout;
 
-#endif
+int	ft_printf(const char *format, ...);
+
+#endif /* ft_printf_h */
