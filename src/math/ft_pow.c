@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/06/13 10:29:18 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:25:34 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/07/18 16:25:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "math.h"
 
-# include <stdlib.h> /* malloc, free, size_t */
+long long int	ft_pow(int n, int exponent)
+{
+	const int	pow = n;
 
-# include "ctype/ctype.h"
-# include "io/io.h"
-# include "lst/lists.h"
-# include "math/math.h"
-# include "stdlib/stdlib.h"
-# include "string/string.h"
+	if (exponent == 0)
+		return (1);
+	while (--exponent > 0)
+		n *= pow;
+	return (n);
+}
 
-#endif
+unsigned long long	ft_pow_u(unsigned long long n, int exponent)
+{
+	const unsigned pow = n;
+	if (exponent == 0)
+		return (1);
+	while (--exponent > 0)
+		n *= pow;
+	return (n);
+}

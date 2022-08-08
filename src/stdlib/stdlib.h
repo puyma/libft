@@ -19,5 +19,6 @@
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
+int		ft_illtohex(unsigned long long n, int c_format, int base);
 
 #endif /* stdlib.h */
