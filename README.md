@@ -1,5 +1,9 @@
-# 42-libft 
+# Libft
 Implementació de `libc`. Source files ordenats més o menys en categories en funció de com es troben originalment en algunes implementacions de `libc`.
+
+![42 Unlicense badge](https://img.shields.io/badge/license-42%20Unlicense-green)
+![printf badge](https://img.shields.io/badge/printf-not%20included-red)
+![get next line badge](https://img.shields.io/badge/get%20next%20line-not%20included-red)
 
 ## Referencies
 - [stdlib.guide](https://stdlib.guide)
