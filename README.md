@@ -17,3 +17,5 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 ## GNU MAKE STUFF
 - [Managing projects with GNU Make - Chapter 02](https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch02.html#pattern_rules)
 - [Makefile tutorial](https://makefiletutorial.com)
+- [Makefile guide by @michaelfromyeg](https://michaelfromyeg.github.io/makefiles/#fancy-makefiles)
+- [Makefile guide by @mutantstargoat](http://nuclear.mutantstargoat.com/articles/make/)
