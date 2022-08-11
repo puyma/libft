@@ -20,9 +20,6 @@ jobs:
           
         - name: Download and Install francinette
           run: curl -fsSL https://raw.github.com/puyma/martinette/master/bin/install.sh | bash
-        
-        - name: Add francinette alias
-          run: alias francinette='~/francinette/tester.sh'
           
         - name: View directory and files
           run: |
@@ -30,4 +27,4 @@ jobs:
             ls -R
             
         - name: Run test
-          run: francinette
+          run: sh ~/francinette/tester.sh
