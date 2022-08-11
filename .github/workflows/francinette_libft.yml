@@ -1,5 +1,27 @@
-name: test LIBFT with francinette
+name: testing with francinette
 
-on: [workflow_dispatch]
-  jobs:
-    runs-on: macos-latest
+on:
+  workflow_dispatch:
+  
+  push:
+    branches:
+      - $default-branch
+
+permissions:
+  contents: read
+
+jobs:
+    libft:
+      name: test libft
+      runs-on: ubuntu-latest
+      steps:
+        # Checkout repository
+        - name: Checkout
+          uses: actions/checkout@v3
+          
+        # Download and Install FRANCINETTE
+        - name: install francinette
+          run: |
+            curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh | bash
+            francinette -u
+            tree
