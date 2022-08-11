@@ -1,7 +1,7 @@
 # Libft
 Implementació de `libc`. Source files ordenats més o menys en categories en funció de com es troben originalment en algunes implementacions de `libc`.
 
-![42 Unlicense badge](https://img.shields.io/badge/license-42%20Unlicense-green)
+![license badge](https://img.shields.io/github/license/puyma/42-libft)
 ![printf badge](https://img.shields.io/badge/printf-included-orange)
 ![get next line badge](https://img.shields.io/badge/get%20next%20line-not%20included-red)
 
