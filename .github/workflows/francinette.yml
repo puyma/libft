@@ -1,4 +1,4 @@
-name: testing with francinette
+name: francinette
 
 on:
   workflow_dispatch:
