@@ -27,4 +27,4 @@ jobs:
             ls -R
             
         - name: Run test
-          run: sh ~/francinette/tester.sh
+          run: bash ~/francinette/tester.sh
