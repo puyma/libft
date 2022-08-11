@@ -16,7 +16,8 @@ include 	./utils.mk
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) -MMD -c $< -o $@
+	$(call msg_comp,Compiled,$(notdir $<))
 
 SRC			= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ			= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC_FILES))))
@@ -30,7 +31,7 @@ DEPS		= $(addprefix $(OBJ_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
 all: $(NAME)
 
 libft:
-	@make -C libft/
+	@make -sC libft/
 	@cp libft/libft.a $(NAME)
 
 $(NAME)::
@@ -38,13 +39,14 @@ $(NAME)::
 
 -include $(DEPS)
 $(NAME):: libft $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
+	$(call msg_comp,Linked,$(NAME))
 
 $(NAME)::
 	$(call msg_end)
 
 clean:
-	@make fclean -C libft/
+	@make fclean -sC libft/
 	@$(RM) -rf $(OBJ_DIR)
 
 fclean: clean

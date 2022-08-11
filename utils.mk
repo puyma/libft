@@ -23,7 +23,7 @@ CYAN		:= \033[0;36m
 # from the GNU Make interpreter...
 
 define msg_ascii
-@echo "$(CYAN)" 
+@echo "$(NOCOLOR)" 
 @echo '                     /$$$$             /$$$$      /$$$$$$$$$$$$ '
 @echo '                    |__/            | $$$$     /$$$$__  $$$$'
 @echo '  /$$$$$$$$$$$$   /$$$$$$$$$$$$  /$$$$ /$$$$$$$$$$$$$$  /$$$$$$$$$$$$  | $$$$  \__/'
@@ -34,22 +34,18 @@ define msg_ascii
 @echo '| $$$$____/ |__/      |__/|__/  |__/   \___/  |__/      '
 @echo '| $$$$                                                  '
 @echo '| $$$$                                                  '
-@echo "|__/                                 by $(AUTHOR)"
-@echo
+@echo "|__/  by $(AUTHOR)"
 @echo "$(NOCOLOR)"
 endef
 
-# more complex...
+# Message after compiling
 
 define msg_comp
-@echo "Compiling..."
-@echo
+@echo "$(GREEN)$1$(NOCOLOR) $2$(NOCOLOR)"
 endef
 
 # Bye message
 
 define msg_end
-@echo "$(CYAN)"
-@echo 'Finished!'
-@echo "$(NOCOLOR)"
+@echo "$(GREEN)Done!$(NOCOLOR)"
 endef
