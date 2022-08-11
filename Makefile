@@ -1,4 +1,5 @@
 NAME		:= libftprintf.a
+AUTHOR		?= mpuig-ma
 CC			:= gcc
 CFLAGS		:= -Wall -Werror -Wextra
 RM			:= rm -f
@@ -10,6 +11,8 @@ SRC_FILES	:= io/ft_printf.c \
 			   math/ft_count_digits.c \
 			   math/ft_pow.c \
 			   stdlib/ft_hex.c
+
+include 	./utils.mk
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -30,9 +33,15 @@ libft:
 	@make -C libft/
 	@cp libft/libft.a $(NAME)
 
+$(NAME)::
+	$(call msg_ascii)
+
 -include $(DEPS)
-$(NAME): libft $(OBJ)
+$(NAME):: libft $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
+
+$(NAME)::
+	$(call msg_end)
 
 clean:
 	@make fclean -C libft/
