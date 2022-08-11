@@ -5,6 +5,8 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 ![printf badge](https://img.shields.io/badge/printf-included-orange)
 ![get next line badge](https://img.shields.io/badge/get%20next%20line-not%20included-red)
 
+[![francinette](https://github.com/puyma/42-libft/actions/workflows/francinette.yml/badge.svg)](https://github.com/puyma/42-libft/actions/workflows/francinette.yml)
+
 ## Referències
 - [stdlib.guide](https://stdlib.guide)
 - [Apple Open Source Libc](https://github.com/apple-opensource/Libc)
