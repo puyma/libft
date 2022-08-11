@@ -1,1 +1,12 @@
-name: repo's license
+on:
+  workflow_dispatch:
+  
+  push: 
+  
+jobs:
+  license:
+    name: get repo's license
+    runs-on: ubuntu-latest
+    steps:
+      - name: url
+        run: curl -i https://api.github.com/repos/puyma/puyma
