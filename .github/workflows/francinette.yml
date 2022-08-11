@@ -21,6 +21,11 @@ jobs:
         - name: Download and Install francinette
           run: curl -fsSL https://raw.github.com/puyma/martinette/master/bin/install.sh | bash
           
+        - name: Install norminette
+          run: |
+            python3 -m pip install --upgrade pip setuptools
+            python3 -m pip install norminette
+          
         - name: View directory and files
           run: |
             pwd
