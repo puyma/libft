@@ -1,0 +1,5 @@
+name: test LIBFT with francinette
+
+on: [workflow_dispatch]
+  jobs:
+    runs-on: macos-latest
