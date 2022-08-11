@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
-#include "../string/string.h"
+#include "ft_stdlib.h"
+#include "../string/ft_string.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

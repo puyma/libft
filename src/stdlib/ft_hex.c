@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
-#include "../math/math.h"
-#include "../io/io.h"
+#include "ft_stdlib.h"
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 
 static int	ft_set_case(int c_case)
 {

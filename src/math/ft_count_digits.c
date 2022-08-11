@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
+#include "ft_math.h"
 
 int	ft_count_digits(long long int n, int base)
 {

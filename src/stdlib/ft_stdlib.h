@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stdlibft.h                                         :+:      :+:    :+:   */
+/*   ft_stdlibft.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STDLIB_H
-# define STDLIB_H
+#ifndef FT_STDLIB_H
+# define FT_STDLIB_H
 
-# include "../string/string.h"
+# include "../string/ft_string.h"
 # include <stdlib.h> /* malloc */
 
 int		ft_atoi(const char *str);
@@ -21,4 +21,4 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
 int		ft_illtohex(unsigned long long n, int c_format, int base);
 
-#endif /* stdlib.h */
+#endif /* ft_stdlib.h */

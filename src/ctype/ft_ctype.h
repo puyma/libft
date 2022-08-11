@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctype.h                                            :+:      :+:    :+:   */
+/*   ft_ctype.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CTYPE_H
-# define CTYPE_H
+#ifndef FT_CTYPE_H
+# define FT_CTYPE_H
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
@@ -23,4 +23,4 @@ int	ft_islower(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
 
-#endif /* ctype.h */
+#endif /* ft_ctype.h */

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "io.h"
-#include "../math/math.h"
+#include "ft_io.h"
+#include "../math/ft_math.h"
 
 int	ft_putchar(char c)
 {

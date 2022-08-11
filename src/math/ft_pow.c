@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
+#include "ft_math.h"
 
 long long int	ft_pow(int n, int exponent)
 {

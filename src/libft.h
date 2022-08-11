@@ -15,11 +15,11 @@
 
 # include <stdlib.h> /* malloc, free, size_t */
 
-# include "ctype/ctype.h"
-# include "io/io.h"
-# include "lst/lists.h"
-# include "math/math.h"
-# include "stdlib/stdlib.h"
-# include "string/string.h"
+# include "ctype/ft_ctype.h"
+# include "io/ft_io.h"
+# include "lst/ft_lists.h"
+# include "math/ft_math.h"
+# include "stdlib/ft_stdlib.h"
+# include "string/ft_string.h"
 
 #endif

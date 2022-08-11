@@ -15,9 +15,9 @@
 
 # include <stdarg.h>
 # include "../libft.h"
-# include "io.h"
-# include "../stdlib/stdlib.h"
-# include "../math/math.h"
+# include "ft_io.h"
+# include "../stdlib/ft_stdlib.h"
+# include "../math/ft_math.h"
 
 typedef struct s_printout
 {
