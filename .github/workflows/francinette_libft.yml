@@ -23,11 +23,8 @@ jobs:
         - name: install francinette
           run: curl -fsSL https://raw.github.com/puyma/martinette/master/bin/install.sh | bash
         
-        - name: reload terminal
-          run: source /home/runner/.bashrc
-          
-        - name: test francinette installation
-          run: francinette -u
+        - name: add francinette alias
+          run: alias francinette='~/francinette/tester.sh'
           
         - name: view directory
           run: pwd
