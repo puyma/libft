@@ -23,5 +23,6 @@ jobs:
         - name: install francinette
           run: |
             curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh | bash
+            source /home/runner/.bashrc
             francinette -u
             tree
