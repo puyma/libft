@@ -15,19 +15,19 @@ jobs:
       name: test libft
       runs-on: ubuntu-latest
       steps:
-        # Checkout repository
-        - name: Checkout
+        - name: Checkout repository
           uses: actions/checkout@v3
           
-        # Download and Install FRANCINETTE
-        - name: install francinette
+        - name: Download and Install francinette
           run: curl -fsSL https://raw.github.com/puyma/martinette/master/bin/install.sh | bash
         
-        - name: add francinette alias
+        - name: Add francinette alias
           run: alias francinette='~/francinette/tester.sh'
           
-        - name: view directory
-          run: pwd
-          
-        - name: view files downloaded
-          run: ls -R
+        - name: View directory and files
+          run: |
+            pwd
+            ls -R
+            
+        - name: Run test
+          run: francinette
