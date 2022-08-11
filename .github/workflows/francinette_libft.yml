@@ -21,8 +21,16 @@ jobs:
           
         # Download and Install FRANCINETTE
         - name: install francinette
-          run: |
-            curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh | bash
-            source /home/runner/.bashrc
-            francinette -u
-            tree
+          run: curl -fsSL https://raw.github.com/puyma/martinette/master/bin/install.sh | bash
+        
+        - name: reload terminal
+          run: source /home/runner/.bashrc
+          
+        - name: test francinette installation
+          run: francinette -u
+          
+        - name: view directory
+          run: pwd
+          
+        - name: view files downloaded
+          run: ls -R
