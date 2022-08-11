@@ -12,8 +12,8 @@
 
 # Variables && (include) source files
 
-NAME			:= libft.a
-AUTHOR			:= mpuig-ma
+NAME			:= libftprintf.a
+AUTHOR			?= mpuig-ma
 CC				:= gcc
 CFLAGS			:= -Wall -Werror -Wextra
 RM				:= rm -rf
@@ -35,9 +35,13 @@ include 		./utils.mk
 
 .PHONY: all re fclean clean fclear rer
 
+# Automatic variables
+# <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
+
 all: $(NAME)
 
 # Compilation
+
 $(NAME)::
 	$(call msg_ascii)
 
@@ -62,7 +66,7 @@ fclean: clean
 re: fclean
 	@$(MAKE)
 
-# Clean –also– with CLEAR;
+# Clean –too– with CLEAR;
 # clears the terminal screen.
 
 fclear: fclean
@@ -70,30 +74,3 @@ fclear: fclean
 
 rer: fclear
 	$(MAKE)
-
-# Special variables
-#
-# $@ 
-# The file name of the target of the rule.
-#
-# $< 
-# The name of the first prerequisite.
-#
-# $? 
-# The names of all the prerequisites that are newer than the target, 
-# with spaces between them. 
-#
-# $^ 
-# The names of all the prerequisites, 
-# with spaces between them.
-#
-# ‘$(@D)’ 
-# The directory part of the file name of the target, 
-# with the trailing slash removed.
-#
-# ‘$(@F)’ 
-# The file-within-directory part of the file name of the target.
-#
-# ‘$(^D)‘ ‘$(^F)’ 
-# Lists of the directory parts and the file-within-directory 
-# parts of all prerequisites.
