@@ -15,9 +15,23 @@
 
 int	ft_putchar(char c)
 {
-	if (write(1, &c, sizeof(c)) != -1)
-		return (1);
-	return (0);
+	return (write(1, &c, 1));
+}
+
+int	ft_putstr(char *s)
+{
+	int	counter;
+
+	counter = 0;
+	if (s == NULL)
+		return (ft_putstr("(null)"));
+	while (*s)
+	{
+		if (ft_putchar(*s++) == -1)
+			return (-1);
+		counter++;
+	}
+	return (counter);
 }
 
 int	ft_putnbr(long long int n)
@@ -75,18 +89,6 @@ int	ft_putnbr_u(unsigned long long n)
 		counter += ft_putchar(d + 48);
 		n -= n / pow * pow;
 	}
-	return (counter);
-}
-
-int	ft_putstr(char *s)
-{
-	int	counter;
-
-	counter = 0;
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	while (*s)
-		counter += ft_putchar(*s++);
 	return (counter);
 }
 

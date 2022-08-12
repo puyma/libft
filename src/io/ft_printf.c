@@ -12,49 +12,112 @@
 
 #include "ft_printf.h"
 
-static int	ft_print_formats(const char *s, va_list *v)
+static void	ft_formats_c(va_list *v, t_printout *p)
 {
-	unsigned int	counter;
+	int	return_value;
 
-	counter = 0;
+	return_value = ft_putchar(va_arg(*v, int));
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
+}
+
+static void	ft_formats_s(va_list *v, t_printout *p)
+{
+	int	return_value;
+
+	(void) v;
+	(void) p;
+	return_value = ft_putstr(va_arg(*v, char *));
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
+}
+
+static void	ft_formats_p(va_list *v, t_printout *p)
+{
+	(void) v;
+	(void) p;
+	ft_putnbr(va_arg(*v, int));
+}
+
+static void	ft_formats_d(va_list *v, t_printout *p)
+{
+	(void) v;
+	(void) p;
+}
+
+static void	ft_formats_u(va_list *v, t_printout *p)
+{
+	(void) v;
+	(void) p;
+}
+
+static void	ft_formats_x(va_list *v, t_printout *p)
+{
+	(void) v;
+	(void) p;
+}
+
+static void	ft_formats_percent(va_list *v, t_printout *p)
+{
+	(void) v;
+	if (ft_putchar('%') == -1)
+		p->n_written = -1;
+	else
+		p->n_written++;
+}
+
+typedef void	(*t_fptr)(va_list *v, t_printout *p);
+
+static t_fptr	ft_formats(const char *s)
+{
 	if (*s == 'c')
-		counter += ft_putchar(va_arg(*v, int));
+		return (ft_formats_c);
 	else if (*s == 's')
-		counter += ft_putstr(va_arg(*v, char *));
+		return (ft_formats_s);
 	else if (*s == 'p')
-		counter += ft_illtohex(va_arg(*v, unsigned long long), *s, 16);
+		return (ft_formats_p);
 	else if (*s == 'd' || *s == 'i')
-		counter += ft_putnbr(va_arg(*v, int));
+		return (ft_formats_d);
 	else if (*s == 'u')
-		counter += ft_putnbr(va_arg(*v, unsigned int));
+		return (ft_formats_u);
 	else if (*s == 'x' || *s == 'X')
-		counter += ft_illtohex(va_arg(*v, unsigned int), *s, 16);
+		return (ft_formats_x);
 	else if (*s == '%')
-		counter += ft_putchar('%');
-	return (counter);
+		return (ft_formats_percent);
+	return (NULL);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	static const char	formats[] = "cspdiuxX%";
-	int					counter;
-	va_list				args;
+	t_fptr				func;
+	t_printout			p;
 
-	counter = 0;
-	va_start(args, format);
-	while (*format != '\0')
+	va_start(p.args, format);
+	p.n_written = 0;
+	while (*format != '\0' && p.n_written >= 0)
 	{
 		if (*format == '%' && ft_strchr(formats, *(format + 1)) != 0)
 		{
-			counter += ft_print_formats(format + 1, &args);
+			func = ft_formats(format + 1);
+			func(&p.args, &p);
 			format++;
 		}
 		else if (*format == '%' && ft_strchr(formats, *(format + 1) == 0))
-			ft_putstr("invalid...");
+			ft_putstr("Invalid format");
 		else
-			counter += ft_putchar(*format);
+		{
+			if (ft_putchar(*format) == -1)
+				p.n_written = -1;
+			else
+				p.n_written++;
+		}
 		format++;
 	}
-	va_end(args);
-	return (counter);
+	va_end(p.args);
+	return (p.n_written);
 }

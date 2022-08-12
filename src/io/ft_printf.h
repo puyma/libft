@@ -28,8 +28,9 @@
 
 typedef struct s_printout
 {
-	int	n_written;
-}		t_printout;
+	va_list		args;
+	int			n_written;
+}				t_printout;
 
 int	ft_printf(const char *format, ...);
 
