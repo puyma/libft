@@ -24,22 +24,34 @@ static int	ft_set_case(int c_case)
 int	ft_illtohex(unsigned long long n, int c_format, int base)
 {
 	int					counter;
+	int					return_value;
 	int					c_case;
 	unsigned int		n_digits;
-	unsigned long long	pow;
 	unsigned long long	nn;
 
-	(void) pow;
 	counter = 0;
 	n_digits = ft_count_digits_u(n, base);
 	if (c_format == 'p')
-		counter += ft_putstr("0x");
+	{
+		return_value = ft_putstr("0x");
+		if (return_value == -1)
+			return (-1);
+		counter += return_value;
+	}
 	c_case = ft_set_case(c_format);
 	while (--n_digits && n != 0)
 	{
 		nn = n / ft_pow_u(base, n_digits);
-		counter += ft_puthex(nn % base, c_case);
+		return_value = ft_puthex(nn % base, c_case);
+		if (return_value == -1)
+			return (-1);
+		else
+			counter += return_value;
 	}
-	counter += ft_puthex(n % base, c_case);
+	return_value = ft_puthex(n % base, c_case);
+	if (return_value == -1)
+		return (-1);
+	else
+		counter += return_value;
 	return (counter);
 }

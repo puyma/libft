@@ -36,70 +36,78 @@ int	ft_putstr(char *s)
 
 int	ft_putnbr(long long int n)
 {
-	int				counter;
-	int				n_digits;
-	int				sign;
-	int				d;
-	int				pow;
+	int	n_digits;
+	int	pow;
+	int	sign;
+	int	return_value;
+	int	d;
 
-	(void) d;
-	counter = 0;
 	sign = 1;
 	n_digits = ft_count_digits(n, 10);
+	return_value = 0;
 	if (n == 0)
 		return (ft_putchar(n + 48));
 	if (n < 0)
 	{
 		sign = -1;
-		counter += ft_putchar('-');
+		if (ft_putchar('-') == -1)
+			return (-1);
+		return_value++;
 	}
 	while (--n_digits >= 0)
 	{
 		pow = ft_pow(10, n_digits);
 		d = n / pow * sign;
-		counter += ft_putchar(d + 48);
+		if (ft_putchar(d + '0') == -1)
+			return (-1);
+		return_value++;
 		n -= n / pow * pow;
 	}
-	return (counter);
+	return (return_value);
 }
 
 int	ft_putnbr_u(unsigned long long n)
 {
-	int				counter;
 	unsigned int	n_digits;
+	unsigned int	pow;
 	unsigned int	sign;
 	unsigned int	d;
-	unsigned int	pow;
+	int				return_value;
 
-	(void) d;
-	counter = 0;
 	sign = 1;
 	n_digits = ft_count_digits_u(n, 10);
+	return_value = 0;
 	if (n == 0)
 		return (ft_putchar(n + 48));
 	if (n < 0)
 	{
 		sign = -1;
-		counter += ft_putchar('-');
+		if (ft_putchar('-') == -1)
+			return (-1);
+		else
+			return_value++;
 	}
 	while (--n_digits >= 0)
 	{
 		pow = ft_pow(10, n_digits);
 		d = n / pow * sign;
-		counter += ft_putchar(d + 48);
+		if (ft_putchar(d + 48) == -1)
+			return (-1);
+		else
+			return_value++;
 		n -= n / pow * pow;
 	}
-	return (counter);
+	return (return_value);
 }
 
 int	ft_puthex(unsigned long long nn, int c_case)
 {
-	int	counter;
+	int	return_value;
 
-	counter = 0;
+	return_value = 0;
 	if (nn <= 9)
-		counter += ft_putnbr(nn);
+		return_value = ft_putnbr(nn);
 	else
-		counter += ft_putchar(nn + c_case);
-	return (counter);
+		return_value = ft_putchar(nn + c_case);
+	return (return_value);
 }

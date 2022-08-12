@@ -27,8 +27,6 @@ static void	ft_formats_s(va_list *v, t_printout *p)
 {
 	int	return_value;
 
-	(void) v;
-	(void) p;
 	return_value = ft_putstr(va_arg(*v, char *));
 	if (return_value == -1)
 		p->n_written = -1;
@@ -38,27 +36,57 @@ static void	ft_formats_s(va_list *v, t_printout *p)
 
 static void	ft_formats_p(va_list *v, t_printout *p)
 {
-	(void) v;
-	(void) p;
-	ft_putnbr(va_arg(*v, int));
+	int	return_value;
+
+	return_value = ft_illtohex(va_arg(*v, unsigned long long), 'p', 16);
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
 }
 
 static void	ft_formats_d(va_list *v, t_printout *p)
 {
-	(void) v;
-	(void) p;
+	int	return_value;
+
+	return_value = ft_putnbr(va_arg(*v, int));
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
 }
 
 static void	ft_formats_u(va_list *v, t_printout *p)
 {
-	(void) v;
-	(void) p;
+	int	return_value;
+
+	return_value = ft_putnbr(va_arg(*v, unsigned int));
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
 }
 
 static void	ft_formats_x(va_list *v, t_printout *p)
 {
-	(void) v;
-	(void) p;
+	int	return_value;
+
+	return_value = ft_illtohex(va_arg(*v, unsigned int), 'x', 16);
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
+}
+
+static void	ft_formats_xx(va_list *v, t_printout *p)
+{
+	int	return_value;
+
+	return_value = ft_illtohex(va_arg(*v, unsigned int), 'X', 16);
+	if (return_value == -1)
+		p->n_written = -1;
+	else
+		p->n_written += return_value;
 }
 
 static void	ft_formats_percent(va_list *v, t_printout *p)
@@ -84,8 +112,10 @@ static t_fptr	ft_formats(const char *s)
 		return (ft_formats_d);
 	else if (*s == 'u')
 		return (ft_formats_u);
-	else if (*s == 'x' || *s == 'X')
+	else if (*s == 'x')
 		return (ft_formats_x);
+	else if (*s == 'X')
+		return (ft_formats_xx);
 	else if (*s == '%')
 		return (ft_formats_percent);
 	return (NULL);
