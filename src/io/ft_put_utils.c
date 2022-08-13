@@ -44,7 +44,7 @@ typedef struct s_putnbr_obj {
 
 int	ft_putnbr(long long int n)
 {
-	s_putnbt_obj	obj;
+	t_putnbr_obj	obj;
 
 	obj.sign = 1;
 	obj.n_digits = ft_count_digits(n, 10);
@@ -77,7 +77,6 @@ int	ft_putnbr_u(unsigned long long n)
 	unsigned int	d;
 	int				return_value;
 
-	sign = 1;
 	n_digits = ft_count_digits_u(n, 10);
 	return_value = 0;
 	if (n == 0)
@@ -85,7 +84,7 @@ int	ft_putnbr_u(unsigned long long n)
 	while (--n_digits >= 0)
 	{
 		pow = ft_pow(10, n_digits);
-		d = n / pow * sign;
+		d = n / pow;
 		if (ft_putchar(d + 48) == -1)
 			return (-1);
 		return_value++;
