@@ -32,6 +32,12 @@ typedef struct s_printout
 	int			n_written;
 }				t_printout;
 
-int	ft_printf(const char *format, ...);
+typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
+
+int		ft_printf(const char *format, ...);
+t_fptr	ft_formats(const char *s);
+void	ft_formats_cs(va_list *v, t_printout *p, const char *s);
+void	ft_formats_du(va_list *v, t_printout *p, const char *s);
+void	ft_formats_xp(va_list *v, t_printout *p, const char *s);
 
 #endif /* ft_printf_h */
