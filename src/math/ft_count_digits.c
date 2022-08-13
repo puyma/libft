@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hex.h                                           :+:      :+:    :+:   */
+/*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:26:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:26:12 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:25:34 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/07/18 16:25:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEX_H
-# define FT_HEX_H
+#include "ft_math.h"
 
-int	ft_illtohex(unsigned long long n, int c_format, int base, int fd);
+int	ft_count_digits(long long int n, int base)
+{
+	int	n_digits;
 
-#endif
+	n_digits = 0;
+	while (n != 0)
+	{
+		n /= base;
+		n_digits++;
+	}
+	return (n_digits);
+}
+
+int	ft_count_digits_u(unsigned long long n, unsigned int base)
+{
+	int	n_digits;
+
+	n_digits = 0;
+	while (n != 0)
+	{
+		n /= base;
+		n_digits++;
+	}
+	return (n_digits);
+}

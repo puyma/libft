@@ -14,16 +14,30 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "ft_put_utils.h"
-# include "ft_str_utils.h"
-# include "ft_calc_utils.h"
-# include "ft_printf_formats.h"
-# include "ft_hex.h"
+# include "../../libft/libft.h" // DIFFERS MAIN (path)
+# include "../math/ft_math.h"
 
-# define FD	1
+// In order to fullfill printf's bonus requirements, 
+// the following headers may have been modified 
+// as well as some of some of the files they refer to (.c)
+//
+// BE CAREFUL WHEN MERGING TO MAIN
 
-int	ft_printf(const char *format, ...);
-int	ft_print_formats(const char *s, va_list *v);
-int	ft_illtohex(unsigned long long n, int c_case, int base, int fd);
+# include "ft_io.h" // DIFFERS MAIN
+# include "../stdlib/ft_stdlib.h" // DIFFERS MAIN
+
+typedef struct s_printout
+{
+	va_list		args;
+	int			n_written;
+}				t_printout;
+
+typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
+
+int		ft_printf(const char *format, ...);
+t_fptr	ft_formats(const char *s);
+void	ft_formats_cs(va_list *v, t_printout *p, const char *s);
+void	ft_formats_du(va_list *v, t_printout *p, const char *s);
+void	ft_formats_xp(va_list *v, t_printout *p, const char *s);
 
 #endif /* ft_printf_h */

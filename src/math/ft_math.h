@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_utils.h                                     :+:      :+:    :+:   */
+/*   ft_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:27:16 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:27:24 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:25:48 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/07/18 16:25:50 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUT_UTILS_H
-# define FT_PUT_UTILS_H
+#ifndef FT_MATH_H
+# define FT_MATH_H
 
-# include <unistd.h>
+long long int		ft_pow(int n, int exponent);
+unsigned long long	ft_pow_u(unsigned long long n, int exponent);
+int					ft_count_digits(long long int n, int base);
+int					ft_count_digits_u(unsigned long long n, unsigned int base);
 
-int	ft_putchar_fd(char c, int fd);
-int	ft_putnbr_fd(long long int n, int fd);
-int	ft_putnbr_fd_u(unsigned long long n, int fd);
-int	ft_putstr_fd(char *s, int fd);
-int	ft_puthex_fd(unsigned long long nn, int c_case, int fd);
-
-#endif /* ft_put_utils_h */
+#endif /* ft_math.h */

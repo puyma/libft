@@ -14,25 +14,29 @@
 
 int	ft_printf(const char *format, ...)
 {
-	static const char	formats[] = "cspdiuxX%";
-	int					counter;
-	va_list				args;
+	t_fptr				func;
+	t_printout			p;
 
-	counter = 0;
-	va_start(args, format);
-	while (*format != '\0')
+	va_start(p.args, format);
+	p.n_written = 0;
+	while (*format != '\0' && p.n_written >= 0)
 	{
-		if (*format == '%' && ft_strchr(formats, *(format + 1)) != 0)
+		if (*format == '%' && ft_strchr("cspdiuxX%", *(format + 1)) != 0)
 		{
-			counter += ft_print_formats(format + 1, &args);
-			format++;
+			func = ft_formats(++format);
+			func(&p.args, &p, format);
 		}
-		else if (*format == '%' && ft_strchr(formats, *(format + 1) == 0))
-			ft_putstr_fd("invalid...", FD);
+		else if (*format == '%' && ft_strchr("cspdiuxX%", *(format + 1) == 0))
+			ft_putstr("Invalid format");
 		else
-			counter += ft_putchar_fd(*format, FD);
+		{
+			if (ft_putchar(*format) == -1)
+				p.n_written = -1;
+			else
+				p.n_written++;
+		}
 		format++;
 	}
-	va_end(args);
-	return (counter);
+	va_end(p.args);
+	return (p.n_written);
 }

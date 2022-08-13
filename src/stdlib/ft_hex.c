@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_put_utils.h"
-#include "ft_calc_utils.h"
+#include "ft_stdlib.h"
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 
 static int	ft_set_case(int c_case)
 {
@@ -20,25 +21,45 @@ static int	ft_set_case(int c_case)
 	return (c_case - 23 - 10);
 }
 
-int	ft_illtohex(unsigned long long n, int c_format, int base, int fd)
-{
+typedef struct s_nbr_obj {
 	int					counter;
+	int					return_value;
 	int					c_case;
 	unsigned int		n_digits;
-	unsigned long long	pow;
 	unsigned long long	nn;
+}						t_nbr_obj;
 
-	(void) pow;
-	counter = 0;
-	n_digits = ft_count_digits_u(n, base);
+int	ft_illtohex(unsigned long long n, int c_format, int base)
+{
+	t_nbr_obj	obj;
+
+	obj.counter = 0;
+	obj.n_digits = ft_count_digits_u(n, base);
 	if (c_format == 'p')
-		counter += ft_putstr_fd("0x", fd);
-	c_case = ft_set_case(c_format);
-	while (--n_digits && n != 0)
 	{
-		nn = n / ft_pow_u(base, n_digits);
-		counter += ft_puthex_fd(nn % base, c_case, fd);
+		obj.return_value = ft_putstr("0x");
+		if (obj.return_value == -1)
+			return (-1);
+		obj.counter += obj.return_value;
 	}
-	counter += ft_puthex_fd(n % base, c_case, fd);
-	return (counter);
+	obj.c_case = ft_set_case(c_format);
+	while (--obj.n_digits && n != 0)
+	{
+		obj.nn = n / ft_pow_u(base, obj.n_digits);
+		obj.return_value = ft_puthex(obj.nn % base, obj.c_case);
+		if (obj.return_value == -1)
+			return (-1);
+		obj.counter += obj.return_value;
+	}
+	obj.return_value = ft_puthex(n % base, obj.c_case);
+	if (obj.return_value == -1)
+		return (-1);
+	obj.counter += obj.return_value;
+	return (obj.counter);
 }
+
+/*
+ *	if (return_value == -1)
+ *		return (-1);
+ *	counter += return_value;
+ */
