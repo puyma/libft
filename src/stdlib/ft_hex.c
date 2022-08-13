@@ -21,37 +21,45 @@ static int	ft_set_case(int c_case)
 	return (c_case - 23 - 10);
 }
 
-int	ft_illtohex(unsigned long long n, int c_format, int base)
-{
+typedef struct s_nbr_obj {
 	int					counter;
 	int					return_value;
 	int					c_case;
 	unsigned int		n_digits;
 	unsigned long long	nn;
+}						t_nbr_obj;
 
-	counter = 0;
-	n_digits = ft_count_digits_u(n, base);
+int	ft_illtohex(unsigned long long n, int c_format, int base)
+{
+	t_nbr_obj	obj;
+
+	obj.counter = 0;
+	obj.n_digits = ft_count_digits_u(n, base);
 	if (c_format == 'p')
 	{
-		return_value = ft_putstr("0x");
-		if (return_value == -1)
+		obj.return_value = ft_putstr("0x");
+		if (obj.return_value == -1)
 			return (-1);
-		counter += return_value;
+		obj.counter += obj.return_value;
 	}
-	c_case = ft_set_case(c_format);
-	while (--n_digits && n != 0)
+	obj.c_case = ft_set_case(c_format);
+	while (--obj.n_digits && n != 0)
 	{
-		nn = n / ft_pow_u(base, n_digits);
-		return_value = ft_puthex(nn % base, c_case);
-		if (return_value == -1)
+		obj.nn = n / ft_pow_u(base, obj.n_digits);
+		obj.return_value = ft_puthex(obj.nn % base, obj.c_case);
+		if (obj.return_value == -1)
 			return (-1);
-		else
-			counter += return_value;
+		obj.counter += obj.return_value;
 	}
-	return_value = ft_puthex(n % base, c_case);
-	if (return_value == -1)
+	obj.return_value = ft_puthex(n % base, obj.c_case);
+	if (obj.return_value == -1)
 		return (-1);
-	else
-		counter += return_value;
-	return (counter);
+	obj.counter += obj.return_value;
+	return (obj.counter);
 }
+
+/*
+ *	if (return_value == -1)
+ *		return (-1);
+ *	counter += return_value;
+ */
