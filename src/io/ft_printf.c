@@ -14,7 +14,6 @@
 
 int	ft_printf(const char *format, ...)
 {
-	static const char	formats[] = "cspdiuxX%";
 	t_fptr				func;
 	t_printout			p;
 
@@ -22,13 +21,12 @@ int	ft_printf(const char *format, ...)
 	p.n_written = 0;
 	while (*format != '\0' && p.n_written >= 0)
 	{
-		if (*format == '%' && ft_strchr(formats, *(format + 1)) != 0)
+		if (*format == '%' && ft_strchr("cspdiuxX%", *(format + 1)) != 0)
 		{
-			format++;
-			func = ft_formats(format);
+			func = ft_formats(++format);
 			func(&p.args, &p, format);
 		}
-		else if (*format == '%' && ft_strchr(formats, *(format + 1) == 0))
+		else if (*format == '%' && ft_strchr("cspdiuxX%", *(format + 1) == 0))
 			ft_putstr("Invalid format");
 		else
 		{
