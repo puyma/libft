@@ -34,43 +34,46 @@ int	ft_putstr(char *s)
 	return (counter);
 }
 
-int	ft_putnbr(long long int n)
-{
+typedef struct s_putnbr_obj {
 	int	n_digits;
 	int	pow;
 	int	sign;
 	int	return_value;
 	int	d;
+}		t_putnbr_obj;
 
-	sign = 1;
-	n_digits = ft_count_digits(n, 10);
-	return_value = 0;
+int	ft_putnbr(long long int n)
+{
+	s_putnbt_obj	obj;
+
+	obj.sign = 1;
+	obj.n_digits = ft_count_digits(n, 10);
+	obj.return_value = 0;
 	if (n == 0)
 		return (ft_putchar(n + 48));
 	if (n < 0)
 	{
-		sign = -1;
+		obj.sign = -1;
 		if (ft_putchar('-') == -1)
 			return (-1);
-		return_value++;
+		obj.return_value++;
 	}
-	while (--n_digits >= 0)
+	while (--obj.n_digits >= 0)
 	{
-		pow = ft_pow(10, n_digits);
-		d = n / pow * sign;
-		if (ft_putchar(d + '0') == -1)
+		obj.pow = ft_pow(10, obj.n_digits);
+		obj.d = n / obj.pow * obj.sign;
+		if (ft_putchar(obj.d + '0') == -1)
 			return (-1);
-		return_value++;
-		n -= n / pow * pow;
+		obj.return_value++;
+		n -= n / obj.pow * obj.pow;
 	}
-	return (return_value);
+	return (obj.return_value);
 }
 
 int	ft_putnbr_u(unsigned long long n)
 {
 	unsigned int	n_digits;
 	unsigned int	pow;
-	unsigned int	sign;
 	unsigned int	d;
 	int				return_value;
 
@@ -79,13 +82,6 @@ int	ft_putnbr_u(unsigned long long n)
 	return_value = 0;
 	if (n == 0)
 		return (ft_putchar(n + 48));
-	if (n < 0)
-	{
-		sign = -1;
-		if (ft_putchar('-') == -1)
-			return (-1);
-		return_value++;
-	}
 	while (--n_digits >= 0)
 	{
 		pow = ft_pow(10, n_digits);
