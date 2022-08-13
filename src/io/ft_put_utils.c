@@ -84,8 +84,7 @@ int	ft_putnbr_u(unsigned long long n)
 		sign = -1;
 		if (ft_putchar('-') == -1)
 			return (-1);
-		else
-			return_value++;
+		return_value++;
 	}
 	while (--n_digits >= 0)
 	{
@@ -93,8 +92,7 @@ int	ft_putnbr_u(unsigned long long n)
 		d = n / pow * sign;
 		if (ft_putchar(d + 48) == -1)
 			return (-1);
-		else
-			return_value++;
+		return_value++;
 		n -= n / pow * pow;
 	}
 	return (return_value);
