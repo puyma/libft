@@ -27,19 +27,21 @@ DEPS		= $(addprefix $(OBJ_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
 # $< The name of the first prerequisite.
 # $@ The file name of the target of the rule.
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-libft:
-	@make -sC libft/
-	@cp libft/libft.a $(NAME)
 
 $(NAME)::
 	$(call msg_ascii)
 
 -include $(DEPS)
-$(NAME):: libft $(OBJ)
+
+$(NAME)::
+	@make -sC libft/
+	@cp -p libft/libft.a $(NAME)
+
+$(NAME):: $(OBJ)
 	@ar -rcs $(NAME) $(OBJ)
 	$(call msg_comp,Linked,$(NAME))
 
