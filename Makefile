@@ -54,7 +54,8 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 #run: $(NAME)
 #	@$(CC) $(NAME) main.c && ./a.out
