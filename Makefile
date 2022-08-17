@@ -31,13 +31,12 @@ DEPS		= $(addprefix $(OBJ_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
 
 all: $(NAME)
 
-
-$(NAME)::
-	$(call msg_ascii)
+#$(NAME)::
+#	$(call msg_ascii)
 
 -include $(DEPS)
 
-$(NAME)::
+$(NAME):: libft
 	@make -sC libft/
 	@cp -p libft/libft.a $(NAME)
 
@@ -55,8 +54,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-re: fclean
-	$(MAKE)
+re: fclean all
 
-run: $(NAME)
-	@$(CC) $(NAME) main.c && ./a.out
+#run: $(NAME)
+#	@$(CC) $(NAME) main.c && ./a.out
