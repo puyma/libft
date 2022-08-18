@@ -6,34 +6,24 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:26:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/28 19:35:29 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:42:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Returns a line read from a file descriptor.
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_line(char *nl_buf)
 {
-	char			*substr;
-	unsigned int	i;
-	unsigned char	*ss;
+	char	*line;
+	int		end;
 
-	ss = (unsigned char *) s + start;
-	if (ft_strlen(s) < start)
-		len = 0;
-	else if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	substr = (char *) malloc(sizeof(*s) * len + 1);
-	if (substr == NULL)
-		return (0);
-	i = 0;
-	while (len--)
-		substr[i++] = *ss++;
-	substr[i] = '\0';
-	return (substr);
+	end = ft_strchr(nl_buf, '\n') - nl_buf;
+	if (end <= 0)
+		return (nl_buf);
+	line = ft_substr(nl_buf, 0, end);
+	return (line);
 }
 
 char	*ft_fill_until_nl(int fd)
@@ -42,41 +32,24 @@ char	*ft_fill_until_nl(int fd)
 	char	*buf;
 	char	*line_buf = "";
 
-	(void) read_value;
-	buf = calloc(BUFFER_SIZE, sizeof(*buf));
-	while (ft_strchr(buf, '\n') == 0)
+	buf = (char *) malloc(sizeof(*buf) * BUFFER_SIZE);
+	ft_memset(buf, 0, (sizeof(*buf) * BUFFER_SIZE));
+	while (ft_strchr(buf, '\n') == 0 && read_value > 0)
 	{
-		ft_memset(buf, 0, BUFFER_SIZE);
-		if (read(fd, buf, BUFFER_SIZE) > 0)
+		ft_memset(buf, 0, (sizeof(*buf) * BUFFER_SIZE));
+		read_value = read(fd, buf, BUFFER_SIZE);
+		if (read_value > 0)
 			line_buf = ft_strjoin(line_buf, buf);
-		else
-		{
-			//printf("returned null\n");
-			//return (NULL);
-			break ;
-		}
 	}
-	if (*line_buf == '\0')
-		return (NULL);
 	return (line_buf);
 }
 
 char	*get_next_line(int fd)				
 {
-	static char		*line_buf;
-	char			*temp;
-	char			*substr;
-	unsigned int	end;
+	static char		*nl_buf;
+	char			*next_line;
 
-	(void) temp;
-	(void) end;
-	(void) substr;
-	line_buf = ft_fill_until_nl(fd);
-	/*
-	end = ft_strchr(line_buf, '\n') - line_buf;
-	if (end < 0)
-		return (line_buf);
-	substr = ft_substr(line_buf, 0, end);
-	*/
-	return (line_buf);
+	nl_buf = ft_fill_until_nl(fd);
+	next_line = ft_line(nl_buf);
+	return (next_line);
 }

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 08:36:27 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/28 19:35:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:09:38 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (strjoin);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*res;
+	char			*substr;
+	unsigned int	i;
+	unsigned char	*ss;
 
-	res = (void *) malloc(count * size);
-	if (res == NULL)
+	ss = (unsigned char *) s + start;
+	if (ft_strlen(s) < start)
+		len = 0;
+	else if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	substr = (char *) malloc(sizeof(*s) * len + 1);
+	if (substr == NULL)
 		return (0);
-	ft_memset(res, 0, count * size);
-	return (res);
+	i = 0;
+	while (len--)
+		substr[i++] = *ss++;
+	substr[i] = '\0';
+	return (substr);
 }
