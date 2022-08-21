@@ -3,6 +3,7 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 
 ![printf badge](https://img.shields.io/badge/printf-included-green)
 ![get next line badge](https://img.shields.io/badge/get%20next%20line-not%20included-red)
+![moulinette compilant](https://img.shields.io/badge/moulinette-non%20compilant-red)
 
 ## Referències
 - [stdlib.guide](https://stdlib.guide)
