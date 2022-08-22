@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 08:36:27 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/18 16:09:38 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:29:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,28 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		substr[i++] = *ss++;
 	substr[i] = '\0';
 	return (substr);
+}
+
+char	*ft_strcpy(char *dst, const char *src)
+{
+	char	*temp_dst;
+	char	*temp_src;
+
+	temp_dst = dst;
+	temp_src = (char *) src;
+	while (*temp_src != '\0')
+		*temp_dst++ = *temp_src++;
+	*temp_dst = '\0';
+	return (dst);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*res;
+
+	res = (char *) malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (res == NULL)
+		return (0);
+	ft_strcpy(res, s1);
+	return (res);
 }

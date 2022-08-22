@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:26:39 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/18 16:11:40 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:04:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strdup(const char *s1);
 
 #endif /* get_next_line.h */
