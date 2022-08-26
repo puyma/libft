@@ -17,10 +17,6 @@
 # include <unistd.h> /* read (also close) */
 # include <sys/types.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE = 20
-#endif /* BUFFER_SIZE */
-
 char	*get_next_line(int fd);
 void	*ft_memset(void *s, int c, size_t len);
 size_t	ft_strlen(const char *s);
