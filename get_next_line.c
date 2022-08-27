@@ -71,8 +71,19 @@ char	*get_next_line(int fd)
 	else
 		len = ft_strchr(buffer, '\n') - buffer;
 	line = ft_substr(buffer, 0, len + 1);
+	if (line == NULL)
+	{
+		free(rest);
+		free(buffer);
+		return (NULL);
+	}
 	free(rest);
 	rest = ft_substr(buffer, len + 1, ft_strlen(buffer) - len + 1);
+	if (rest == NULL)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	free(buffer);
 	return (line);
 }

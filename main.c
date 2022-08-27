@@ -31,14 +31,14 @@ int	main(void)
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	if (fd == -1)
-		write(1, "failed opening file descriptor\n", 31);
-	counter = 6;
+	counter = 1;
 	while (counter--)
 	{
 		line = get_next_line(fd);
-		if (line == NULL || *line == '\0')
+		if (line == NULL)
 			write(1, "(null)", 6);
+		else if (*line == '\0')
+			write(1, "\\0", 2);
 		else
 		{
 			i = 0;
