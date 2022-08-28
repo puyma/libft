@@ -29,6 +29,7 @@
 typedef struct s_printout
 {
 	va_list		args;
+	const char	*format;
 	int			n_written;
 }				t_printout;
 
