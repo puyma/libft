@@ -7,6 +7,7 @@ RM			:= rm -f
 SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRC_FILES	:= io/ft_formats.c \
+			   io/ft_flags.c \
 			   io/ft_printf.c \
 			   io/ft_put_utils.c \
 			   math/ft_count_digits.c \
