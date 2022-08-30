@@ -3,7 +3,6 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 
 ![printf badge](https://img.shields.io/badge/printf-OK-green)
 ![get next line badge](https://img.shields.io/badge/get%20next%20line-KO-red)
-![libft subject version](https://img.shields.io/badge/libft-v.15-lightgrey)
 ![subject compilant](https://img.shields.io/badge/subject-KO-red)
 ![norminette compilant](https://img.shields.io/badge/norminette-OK-green)
 
