@@ -5,7 +5,7 @@ CFLAGS		:= -Wall -Werror -Wextra
 RM			:= rm -f
 
 SRC_DIR		:= src
-OBJ_DIR		:= obj
+BUILD_DIR	:= build
 SRC_FILES	:= io/ft_formats.c \
 			   io/ft_flags.c \
 			   io/ft_printf.c \
@@ -57,19 +57,19 @@ endef
 
 # .o to .c rule
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -MMD -c $< -o $@
 	$(call msg_comp,Compiled,$(notdir $<))
 
 SRC			= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJ			= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC_FILES))))
-DEPS		= $(addprefix $(OBJ_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
+OBJS		= $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(basename $(SRC_FILES))))
+DEPS		= $(addprefix $(BUILD_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
 
 # $< The name of the first prerequisite.
 # $@ The file name of the target of the rule.
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
@@ -82,19 +82,25 @@ $(NAME):: libft
 	@make -sC libft/
 	@cp -p libft/libft.a $(NAME)
 
-$(NAME):: $(OBJ)
-	@ar -rcs $(NAME) $(OBJ)
+$(NAME):: $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
 	$(call msg_comp,Linked,$(NAME))
 
 $(NAME)::
 	$(call msg_end)
 
+bonus: all
+
 clean:
 	@make fclean -sC libft/
-	@$(RM) -rf $(OBJ_DIR)
+	@$(RM) -rf $(BUILD_DIR)
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) a.out
 
 re: fclean
 	$(MAKE)
+
+run:
+	@$(CC) main.c $(NAME) && ./a.out

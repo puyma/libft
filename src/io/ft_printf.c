@@ -11,19 +11,30 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void	ft_print_formats(t_printout *p)
 {
 	t_fptr	func;
 
-	if (*p->format == '%' && ft_strchr("cspdiuxX%", *(p->format + 1)) != 0)
+	if (ft_strchr(FORMATS, *(p->format)) != 0)
 	{
-		func = ft_formats(++p->format);
+		func = ft_formats(p);
 		func(&p->args, p, p->format);
 	}
-	else if (*p->format == '%' && ft_strchr("cspdiuxX%", *(p->format + 1) == 0))
+	else if (ft_strchr(FLAGS, *(p->format)) != 0)
+	{
+		ft_manage_flags(p);
+	}
+	else
 		ft_putstr("Invalid format");
+}
+
+static void	ft_print_non_formats(t_printout *p)
+{
+	if (ft_putchar(*p->format) == -1)
+		p->n_written = -1;
+	else
+		p->n_written++;
 }
 
 int	ft_printf(const char *format, ...)
@@ -36,14 +47,12 @@ int	ft_printf(const char *format, ...)
 	while (*p.format != '\0' && p.n_written >= 0)
 	{
 		if (*p.format == '%')
-			ft_print_formats(&p);
-		else
 		{
-			if (ft_putchar(*p.format) == -1)
-				p.n_written = -1;
-			else
-				p.n_written++;
+			p.format++;
+			ft_print_formats(&p);
 		}
+		else
+			ft_print_non_formats(&p);
 		p.format++;
 	}
 	va_end(p.args);

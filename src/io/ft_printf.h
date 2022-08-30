@@ -26,19 +26,25 @@
 # include "ft_io.h" // DIFFERS MAIN
 # include "../stdlib/ft_stdlib.h" // DIFFERS MAIN
 
+# define FORMATS "cspdiuxX%" /* conversion specifiers */
+# define FLAGS "# +-0." /* flag characters */
+
 typedef struct s_printout
 {
 	va_list		args;
 	const char	*format;
 	int			n_written;
+	char		flag_numeric;
+	char		flag_adjustment;
 }				t_printout;
 
 typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
 
 int		ft_printf(const char *format, ...);
-t_fptr	ft_formats(const char *s);
+t_fptr	ft_formats(t_printout *p);
 void	ft_formats_cs(va_list *v, t_printout *p, const char *s);
 void	ft_formats_du(va_list *v, t_printout *p, const char *s);
 void	ft_formats_xp(va_list *v, t_printout *p, const char *s);
+void	ft_manage_flags(t_printout *p);
 
 #endif /* ft_printf_h */

@@ -10,19 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../io/ft_io.h"
-#include "../stdlib/ft_stdlib.h"
-#include "ft_printf.h"
+#include "../io/ft_io.h" /* put_utils */
+#include "../stdlib/ft_stdlib.h" /* ft_illtohex() */
+#include "ft_printf.h" /* stdarg, ft_formats, t_fptr */
 
-t_fptr	ft_formats(const char *s)
+t_fptr	ft_formats(t_printout *p)
 {
+	const char	*s;
+	t_fptr		return_func;
+
+	s = p->format;
 	if (*s == 'c' || *s == 's' || *s == '%')
-		return (ft_formats_cs);
+		return_func = ft_formats_cs;
 	else if (*s == 'd' || *s == 'i' || *s == 'u')
-		return (ft_formats_du);
+		return_func = ft_formats_du;
 	else if (*s == 'p' || *s == 'x' || *s == 'X')
-		return (ft_formats_xp);
-	return (NULL);
+		return_func = ft_formats_xp;
+	else
+		return_func = NULL;
+	return (return_func);
 }
 
 void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
@@ -45,12 +51,25 @@ void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 
 void	ft_formats_du(va_list *v, t_printout *p, const char *s)
 {
-	int	return_value;
+	int			return_value;
+	long int	argv_int;
 
+	argv_int = 0;
 	if (*s == 'u')
 		return_value = ft_putnbr(va_arg(*v, unsigned int));
 	else if (*s == 'd' || *s == 'i')
-		return_value = ft_putnbr(va_arg(*v, int));
+	{
+		argv_int = va_arg(*v, int);
+		if (argv_int >= 0 && (p->flag_numeric == '+' || p->flag_numeric == ' '))
+		{
+			return_value = ft_putchar(p->flag_numeric);
+			if (return_value == -1)
+				p->n_written = -1;
+			else
+				p->n_written += return_value;
+		}
+		return_value = ft_putnbr(argv_int);
+	}
 	else
 		return_value = -1;
 	if (return_value == -1)
