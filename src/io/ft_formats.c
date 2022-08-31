@@ -33,14 +33,21 @@ t_fptr	ft_formats(t_printout *p)
 
 void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 {
-	int	return_value;
+	int		return_value;
+	char	*argv_str;
 
 	if (*s == '%')
 		return_value = ft_putchar('%');
 	else if (*s == 'c')
 		return_value = ft_putchar(va_arg(*v, int));
 	else if (*s == 's')
-		return_value = ft_putstr(va_arg(*v, char *));
+	{
+		argv_str = va_arg(*v, char *);
+		if (p->flag_alternate_form == ' ' && *argv_str != '\0')
+			return_value = ft_putchar('i');	
+		return_value = ft_putstr(argv_str);
+		p->flag_alternate_form = '\0';
+	}
 	else
 		return_value = -1;
 	if (return_value == -1)
@@ -60,9 +67,10 @@ void	ft_formats_du(va_list *v, t_printout *p, const char *s)
 	else if (*s == 'd' || *s == 'i')
 	{
 		argv_int = va_arg(*v, int);
-		if (argv_int >= 0 && (p->flag_numeric == '+' || p->flag_numeric == ' '))
+		if (argv_int >= 0 && ft_strchr("+ ", p->flag_alternate_form) != 0)
 		{
-			return_value = ft_putchar(p->flag_numeric);
+			return_value = ft_putchar(p->flag_alternate_form);
+			p->flag_alternate_form = '\0';
 			if (return_value == -1)
 				p->n_written = -1;
 			else
@@ -85,7 +93,14 @@ void	ft_formats_xp(va_list *v, t_printout *p, const char *s)
 	if (*s == 'p')
 		return_value = ft_illtohex(va_arg(*v, unsigned long long), *s, 16);
 	else if (*s == 'x' || *s == 'X')
+	{
+		if (p->flag_alternate_form == '#')
+		{
+			return_value = ft_putstr("0x");
+			p->flag_alternate_form = '\0';
+		}
 		return_value = ft_illtohex(va_arg(*v, unsigned int), *s, 16);
+	}
 	else
 		return_value = -1;
 	if (return_value == -1)

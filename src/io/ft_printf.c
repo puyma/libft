@@ -12,6 +12,35 @@
 
 #include "ft_printf.h"
 
+static void	ft_print_formats(t_printout *p);
+static void	ft_print_non_formats(t_printout *p);
+
+void	ft_return_check()
+{
+}
+
+int	ft_printf(const char *format, ...)
+{
+	t_printout	p;
+
+	va_start(p.args, format);
+	p.format = format;
+	p.n_written = 0;
+	while (*p.format != '\0' && p.n_written >= 0)
+	{
+		if (*p.format != '%')
+			ft_print_non_formats(&p);
+		else
+		{
+			p.format++;
+			ft_print_formats(&p);
+		}
+		p.format++;
+	}
+	va_end(p.args);
+	return (p.n_written);
+}
+
 static void	ft_print_formats(t_printout *p)
 {
 	t_fptr	func;
@@ -35,26 +64,4 @@ static void	ft_print_non_formats(t_printout *p)
 		p->n_written = -1;
 	else
 		p->n_written++;
-}
-
-int	ft_printf(const char *format, ...)
-{
-	t_printout	p;
-
-	va_start(p.args, format);
-	p.format = format;
-	p.n_written = 0;
-	while (*p.format != '\0' && p.n_written >= 0)
-	{
-		if (*p.format == '%')
-		{
-			p.format++;
-			ft_print_formats(&p);
-		}
-		else
-			ft_print_non_formats(&p);
-		p.format++;
-	}
-	va_end(p.args);
-	return (p.n_written);
 }
