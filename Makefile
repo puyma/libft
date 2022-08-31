@@ -102,5 +102,5 @@ fclean: clean
 re: fclean
 	$(MAKE)
 
-run:
+run: $(NAME)
 	@$(CC) main.c $(NAME) && ./a.out
