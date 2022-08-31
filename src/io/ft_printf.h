@@ -34,8 +34,9 @@ typedef struct s_printout
 	va_list		args;
 	const char	*format;
 	int			n_written;
-	char		flag_numeric;
+	char		flag_alternate_form;
 	char		flag_adjustment;
+	int			n_precision;
 }				t_printout;
 
 typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
