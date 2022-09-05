@@ -6,17 +6,20 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:19:52 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/29 18:19:52 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/05 20:02:47 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 
+/*
 static void	ft_flags_alternate_form(t_printout *p); // flags #, space, +
 static void	ft_flags_adjust(t_printout *p); // flags -, 0, .
-static int	ft_chars_until_format(const char *s);
+*/
 
+int	ft_chars_until_format(const char *s);
+
+/*
 void	ft_manage_flags(t_printout *p)
 {
 	int	chars_until_format;
@@ -31,7 +34,9 @@ void	ft_manage_flags(t_printout *p)
 	else
 		write(1, "flags error\n", 12);
 }
+*/
 
+/*
 static void	ft_flags_alternate_form(t_printout *p)
 {
 	t_fptr	func;
@@ -44,7 +49,9 @@ static void	ft_flags_alternate_form(t_printout *p)
 	if (func != NULL)
 		func(&p->args, p, p->format);
 }
+*/
 
+/*
 static void	ft_flags_adjust(t_printout *p)
 {
 	int		chars_until_format;
@@ -61,8 +68,9 @@ static void	ft_flags_adjust(t_printout *p)
 	else
 		write(1, "flaggs error", 12);
 }
+*/
 
-static int	ft_chars_until_format(const char *s)
+int	ft_chars_until_format(const char *s)
 {
 	int	i;
 

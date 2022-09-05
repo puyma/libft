@@ -6,19 +6,16 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:26:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/05 20:24:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void		ft_manage_flags(t_printout *p);
+int			ft_chars_until_format(t_printout *p);
 static void	ft_print_formats(t_printout *p);
 static void	ft_print_non_formats(t_printout *p);
-
-void	ft_dump_flags(t_printout *p)
-{
-	ft_putchar(*(p->format++));
-}
 
 int	ft_printf(const char *format, ...)
 {
@@ -45,7 +42,7 @@ static void	ft_print_formats(t_printout *p)
 
 	p->format++;
 	if (ft_strchr(FLAGS, *(p->format)) != 0)
-		ft_dump_flags(p);
+		ft_manage_flags(p);
 	if (ft_strchr(FORMATS, *(p->format)) != 0)
 	{
 		func = ft_formats(p->format);
@@ -66,4 +63,22 @@ void	ft_ensure_print(t_printout *p, int func_return)
 		p->n_written = -1;
 	else if (func_return >= 0)
 		p->n_written += func_return;
+}
+
+void	ft_manage_flags(t_printout *p)
+{
+	const char	*s = p->format++;
+	int			chars_until_format;
+
+	chars_until_format = ft_chars_until_format(p);
+	p->format += chars_until_format;
+	while (chars_until_format--)
+	{
+		if (*s == '#' || *s == '+')
+			p->flag_alternate_form = *s++;
+		if (*s == '.')
+			p->n_precision = 3;
+		else
+			ft_putchar(*s);
+	}
 }
