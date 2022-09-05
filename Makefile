@@ -89,7 +89,7 @@ $(NAME):: $(OBJS)
 $(NAME)::
 	$(call msg_end)
 
-bonus: all
+#bonus: all
 
 clean:
 	@make fclean -sC libft/

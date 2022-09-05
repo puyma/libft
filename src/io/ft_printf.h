@@ -42,10 +42,12 @@ typedef struct s_printout
 typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
 
 int		ft_printf(const char *format, ...);
-t_fptr	ft_formats(t_printout *p);
+t_fptr	ft_formats(const char *s);
 void	ft_formats_cs(va_list *v, t_printout *p, const char *s);
 void	ft_formats_du(va_list *v, t_printout *p, const char *s);
 void	ft_formats_xp(va_list *v, t_printout *p, const char *s);
 void	ft_manage_flags(t_printout *p);
+void	ft_dump_flags(t_printout *p);
+void	ft_ensure_print(t_printout *p, int func_return);
 
 #endif /* ft_printf_h */

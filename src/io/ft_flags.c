@@ -40,7 +40,7 @@ static void	ft_flags_alternate_form(t_printout *p)
 	chars_until_format = ft_chars_until_format(p->format);
 	p->flag_alternate_form = *(p->format);
 	p->format += chars_until_format;
-	func = ft_formats(p);
+	func = ft_formats(p->format);
 	if (func != NULL)
 		func(&p->args, p, p->format);
 }

@@ -12,8 +12,13 @@
 
 #include "ft_printf.h"
 
-void		ft_ensure_print(t_printout *p, int func_return);
 static void	ft_print_formats(t_printout *p);
+static void	ft_print_non_formats(t_printout *p);
+
+void	ft_dump_flags(t_printout *p)
+{
+	ft_putchar(*(p->format++));
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -24,14 +29,35 @@ int	ft_printf(const char *format, ...)
 	p.n_written = 0;
 	while (*p.format != '\0' && p.n_written >= 0)
 	{
-		if (*p.format != '%')
-			ft_ensure_print(&p, ft_putchar(*p.format));
-		else
+		if (*p.format == '%')
 			ft_print_formats(&p);
+		else
+			ft_print_non_formats(&p);
 		p.format++;
 	}
 	va_end(p.args);
 	return (p.n_written);
+}
+
+static void	ft_print_formats(t_printout *p)
+{
+	t_fptr	func;
+
+	p->format++;
+	if (ft_strchr(FLAGS, *(p->format)) != 0)
+		ft_dump_flags(p);
+	if (ft_strchr(FORMATS, *(p->format)) != 0)
+	{
+		func = ft_formats(p->format);
+		func(&p->args, p, p->format);
+	}
+	else
+		ft_putstr("Invalid format");
+}
+
+static void	ft_print_non_formats(t_printout *p)
+{
+	ft_ensure_print(p, ft_putchar(*(p->format)));
 }
 
 void	ft_ensure_print(t_printout *p, int func_return)
@@ -40,22 +66,4 @@ void	ft_ensure_print(t_printout *p, int func_return)
 		p->n_written = -1;
 	else if (func_return >= 0)
 		p->n_written += func_return;
-}
-
-static void	ft_print_formats(t_printout *p)
-{
-	t_fptr	func;
-
-	p->format++;
-	if (ft_strchr(FORMATS, *(p->format)) != 0)
-	{
-		func = ft_formats(p);
-		func(&p->args, p, p->format);
-	}
-	else if (ft_strchr(FLAGS, *(p->format)) != 0)
-	{
-		ft_manage_flags(p);
-	}
-	else
-		ft_putstr("Invalid format");
 }

@@ -14,12 +14,10 @@
 #include "../stdlib/ft_stdlib.h" /* ft_illtohex() */
 #include "ft_printf.h" /* stdarg, ft_formats, t_fptr */
 
-t_fptr	ft_formats(t_printout *p)
+t_fptr	ft_formats(const char *s)
 {
-	const char	*s;
-	t_fptr		return_func;
+	t_fptr	return_func;
 
-	s = p->format;
 	if (*s == 'c' || *s == 's' || *s == '%')
 		return_func = ft_formats_cs;
 	else if (*s == 'd' || *s == 'i' || *s == 'u')
@@ -44,7 +42,7 @@ void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 	{
 		argv_str = va_arg(*v, char *);
 		if (p->flag_alternate_form == ' ' && *argv_str != '\0')
-			return_value = ft_putchar('i');	
+			return_value = ft_putchar('i');
 		return_value = ft_putstr(argv_str);
 		p->flag_alternate_form = '\0';
 	}
