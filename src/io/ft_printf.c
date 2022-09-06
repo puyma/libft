@@ -6,16 +6,11 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/05 20:24:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:11:50 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void		ft_manage_flags(t_printout *p);
-int			ft_chars_until_format(t_printout *p);
-static void	ft_print_formats(t_printout *p);
-static void	ft_print_non_formats(t_printout *p);
 
 int	ft_printf(const char *format, ...)
 {
@@ -24,19 +19,19 @@ int	ft_printf(const char *format, ...)
 	va_start(p.args, format);
 	p.format = format;
 	p.n_written = 0;
-	while (*p.format != '\0' && p.n_written >= 0)
+	while (*(p.format) != '\0' && p.n_written >= 0)
 	{
-		if (*p.format == '%')
+		if (*(p.format) == '%')
 			ft_print_formats(&p);
 		else
-			ft_print_non_formats(&p);
+			ft_ensure_print(&p, ft_putchar(*(p.format)));
 		p.format++;
 	}
 	va_end(p.args);
 	return (p.n_written);
 }
 
-static void	ft_print_formats(t_printout *p)
+void	ft_print_formats(t_printout *p)
 {
 	t_fptr	func;
 
@@ -52,33 +47,10 @@ static void	ft_print_formats(t_printout *p)
 		ft_putstr("Invalid format");
 }
 
-static void	ft_print_non_formats(t_printout *p)
-{
-	ft_ensure_print(p, ft_putchar(*(p->format)));
-}
-
 void	ft_ensure_print(t_printout *p, int func_return)
 {
 	if (func_return == -1)
 		p->n_written = -1;
 	else if (func_return >= 0)
 		p->n_written += func_return;
-}
-
-void	ft_manage_flags(t_printout *p)
-{
-	const char	*s = p->format++;
-	int			chars_until_format;
-
-	chars_until_format = ft_chars_until_format(p);
-	p->format += chars_until_format;
-	while (chars_until_format--)
-	{
-		if (*s == '#' || *s == '+')
-			p->flag_alternate_form = *s++;
-		if (*s == '.')
-			p->n_precision = 3;
-		else
-			ft_putchar(*s);
-	}
 }

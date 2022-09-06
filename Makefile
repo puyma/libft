@@ -1,7 +1,7 @@
 NAME		:= libftprintf.a
 AUTHOR		?= mpuig-ma
 CC			:= gcc
-CFLAGS		:= -Wall -Werror -Wextra
+CFLAGS		:= -Wall -Werror -Wextra -g
 RM			:= rm -f
 
 SRC_DIR		:= src
@@ -89,7 +89,7 @@ $(NAME):: $(OBJS)
 $(NAME)::
 	$(call msg_end)
 
-#bonus: all
+bonus: all
 
 clean:
 	@make fclean -sC libft/

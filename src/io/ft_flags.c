@@ -5,72 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 18:19:52 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/05 20:02:47 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/09/06 14:06:00 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/09/06 14:26:38 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-static void	ft_flags_alternate_form(t_printout *p); // flags #, space, +
-static void	ft_flags_adjust(t_printout *p); // flags -, 0, .
-*/
-
-int	ft_chars_until_format(const char *s);
-
-/*
-void	ft_manage_flags(t_printout *p)
-{
-	int	chars_until_format;
-
-	chars_until_format = ft_chars_until_format(p->format);
-	(void) chars_until_format;
-	p->flag_alternate_form = '\0';
-	if (ft_strchr("# +", *(p->format)) != 0)
-		ft_flags_alternate_form(p);
-	else if (ft_strchr("-0.", *(p->format)) != 0)
-		ft_flags_adjust(p);
-	else
-		write(1, "flags error\n", 12);
-}
-*/
-
-/*
-static void	ft_flags_alternate_form(t_printout *p)
-{
-	t_fptr	func;
-	int		chars_until_format;
-
-	chars_until_format = ft_chars_until_format(p->format);
-	p->flag_alternate_form = *(p->format);
-	p->format += chars_until_format;
-	func = ft_formats(p->format);
-	if (func != NULL)
-		func(&p->args, p, p->format);
-}
-*/
-
-/*
-static void	ft_flags_adjust(t_printout *p)
-{
-	int		chars_until_format;
-
-	chars_until_format = ft_chars_until_format(p->format);
-	p->flag_adjustment = *(p->format);
-	p->format += chars_until_format;
-	if (p->flag_adjustment == '-')
-		write(1, "-", 1);
-	else if (p->flag_adjustment == '0')
-		write(1, "0", 1);
-	else if (p->flag_adjustment == '.')
-		write(1, "precision", 9);
-	else
-		write(1, "flaggs error", 12);
-}
-*/
-
-int	ft_chars_until_format(const char *s)
+static int	ft_chars_until_format(const char *s)
 {
 	int	i;
 
@@ -78,4 +20,37 @@ int	ft_chars_until_format(const char *s)
 	while (ft_strchr(FORMATS, s[i]) == 0)
 		i++;
 	return (i);
+}
+
+void	ft_manage_flags(t_printout *p)
+{
+	const char	*s = p->format;
+	int			chars_until_format;
+
+	ft_dump_flags(p);
+	chars_until_format = ft_chars_until_format(s);
+	p->format += chars_until_format;
+	while (chars_until_format--)
+	{
+		if (*s == '#')
+			p->flag_alternate_form = *s;
+		if (*s == '+')
+			p->flag_sign = *s;
+		if (*s == ' ')
+			p->flag_blank = *s;
+		if (*s == '-' || *s == '0')
+			p->flag_adjustment += *s;
+		if (*s == '.')
+			p->n_precision = 3;
+		s++;
+	}
+}
+
+void	ft_dump_flags(t_printout *p)
+{
+	p->flag_alternate_form = '\0';
+	p->flag_sign = '\0';
+	p->flag_blank = '\0';
+	p->flag_adjustment = '\0';
+	p->n_precision = -1;
 }

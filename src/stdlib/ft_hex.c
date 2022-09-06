@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:25:59 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:26:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:26:59 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,3 @@ int	ft_illtohex(unsigned long long n, int c_format, int base)
 	obj.counter += obj.return_value;
 	return (obj.counter);
 }
-
-/*
- *	if (return_value == -1)
- *		return (-1);
- *	counter += return_value;
- */
