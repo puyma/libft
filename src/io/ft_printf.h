@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/06 17:14:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:06:14 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include "../../libft/libft.h" // DIFFERS MAIN (path)
 # include "../math/ft_math.h"
+# include <stdlib.h> /* free, malloc */
 
 // In order to fullfill printf's bonus requirements, 
 // the following headers may have been modified 
