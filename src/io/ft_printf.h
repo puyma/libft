@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/06 14:09:37 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:14:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_printout
 	unsigned char	flag_blank;
 	unsigned char	flag_alternate_form;
 	unsigned char	flag_adjustment;
+	unsigned char	flag_padding_char;
 	int				n_precision;
 	int				n_written;
 

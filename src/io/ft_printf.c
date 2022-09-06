@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/06 14:11:50 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:13:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_print_formats(t_printout *p)
 	t_fptr	func;
 
 	p->format++;
-	if (ft_strchr(FLAGS, *(p->format)) != 0)
+	if (ft_strchr(FLAGS, *(p->format)) != 0 || ft_isdigit(*(p->format)))
 		ft_manage_flags(p);
 	if (ft_strchr(FORMATS, *(p->format)) != 0)
 	{
