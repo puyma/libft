@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:37:22 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/06 14:47:10 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:41:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ t_fptr	ft_formats(const char *s)
 void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 {
 	char	*arg_str;
+	int		precision;
 
+	precision = p->n_precision;
 	if (*s == '%')
 		ft_ensure_print(p, ft_putchar('%'));
 	else if (*s == 'c')
+	{
+		if (p->flag_adjustment != '0')
+			precision--;
+		while (p->flag_adjustment != '\0' && precision-- >= 0)
+			ft_ensure_print(p, ft_putchar(p->flag_padding_char));
 		ft_ensure_print(p, ft_putchar(va_arg(*v, int)));
+	}
 	else if (*s == 's')
 	{
 		arg_str = va_arg(*v, char *);
