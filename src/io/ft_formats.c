@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:37:22 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/08 19:50:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:58:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_do_flag_adjustment(t_printout *p, char c, int length)
 	if (length > p->n_precision && p->flag_sign == '+')
 		length = 0;
 	else if (length > p->n_precision)
-		length = 1; //length - p->n_precision;
+		length = 1;
 	else
 		length = p->n_precision - length;
 	while (--length >= 0 && p->n_written != -1)
@@ -62,9 +62,12 @@ void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 	else if (*s == 's')
 	{
 		arg_str = va_arg(*v, char *);
-		if (p->flag_adjustment != '\0' && *arg_str != '\0')
+		if (p->n_precision <= 0)
+			ft_ensure_print(p, ft_putstr(arg_str));
+		if (p->flag_adjustment != '\0' || p->flag_blank != '\0')
 			ft_do_flag_adjustment(p, p->flag_alt_form, ft_strlen(arg_str));
-		ft_ensure_print(p, ft_putstr(arg_str));
+		if (!(p->n_precision <= 0))
+			ft_ensure_print(p, ft_putstr(arg_str));
 	}
 	else
 		ft_ensure_print(p, -1);
