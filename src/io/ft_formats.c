@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:37:22 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/07 22:26:02 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:50:08 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 #include "../stdlib/ft_stdlib.h" /* ft_illtohex() */
 #include "ft_printf.h" /* stdarg, ft_formats, t_fptr */
 
-static void	ft_do_flag_adjustment(t_printout *p, const char c, int length)
+static void	ft_do_flag_adjustment(t_printout *p, char c, int length)
 {
-	ft_printf("length: %d\n", length);
-	if (length > p->n_precision)
-		length = length - p->n_precision;
+	if (c == '\0')
+		c = ' ';
+	if (length > p->n_precision && p->flag_sign == '+')
+		length = 0;
+	else if (length > p->n_precision)
+		length = 1; //length - p->n_precision;
 	else
 		length = p->n_precision - length;
 	while (--length >= 0 && p->n_written != -1)
-	{
 		ft_ensure_print(p, ft_putchar(c));
-	}
 }
 
 t_fptr	ft_formats(const char *s)
@@ -61,13 +62,8 @@ void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 	else if (*s == 's')
 	{
 		arg_str = va_arg(*v, char *);
-		ft_printf("str: %s\n", arg_str);
-		if (p->flag_blank != '\0' && *arg_str != '\0')
-		{
-			ft_printf("hey");
+		if (p->flag_adjustment != '\0' && *arg_str != '\0')
 			ft_do_flag_adjustment(p, p->flag_alt_form, ft_strlen(arg_str));
-			//ft_ensure_print(p, ft_putchar(' '));
-		}
 		ft_ensure_print(p, ft_putstr(arg_str));
 	}
 	else
@@ -76,17 +72,25 @@ void	ft_formats_cs(va_list *v, t_printout *p, const char *s)
 
 void	ft_formats_du(va_list *v, t_printout *p, const char *s)
 {
-	int	argv_int;
+	int	arg_int;
+	int	n_digits;
 
-	argv_int = 0;
+	arg_int = 0;
+	n_digits = 0;
 	if (*s == 'u')
 		ft_ensure_print(p, ft_putnbr(va_arg(*v, unsigned int)));
 	else if (*s == 'd' || *s == 'i')
 	{
-		argv_int = va_arg(*v, int);
-		if (argv_int >= 0 && p->flag_sign == '+')
+		arg_int = va_arg(*v, int);
+		n_digits = ft_count_digits(arg_int, 10);
+		if (arg_int >= 0 && p->flag_sign == '+')
+		{
 			ft_ensure_print(p, ft_putchar(p->flag_sign));
-		ft_ensure_print(p, ft_putnbr(argv_int));
+			n_digits--;
+		}
+		if (p->flag_blank != '\0' || p->flag_adjustment != '\0')
+			ft_do_flag_adjustment(p, p->flag_adjustment, n_digits);
+		ft_ensure_print(p, ft_putnbr(arg_int));
 	}
 	else
 		ft_ensure_print(p, -1);

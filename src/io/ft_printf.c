@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/06 17:13:02 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:22:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	ft_printf(const char *format, ...)
 	p.n_written = 0;
 	while (*(p.format) != '\0' && p.n_written >= 0)
 	{
+		ft_dump_flags(&p);
 		if (*(p.format) == '%')
 			ft_print_formats(&p);
 		else

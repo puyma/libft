@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:06:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/07 22:25:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:24:30 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	ft_set_precision(t_printout *p, int n_digits)
 {
 	char	*atoi;
 
+	if (n_digits > 0 && p->flag_blank == '\0' && p->flag_adjustment == '\0')
+		p->flag_adjustment = ' ';
 	while (ft_isdigit(*(p->format)) == 0)
 			p->format++;
 	atoi = ft_substr(p->format, 0, n_digits);
@@ -40,22 +42,21 @@ void	ft_manage_flags(t_printout *p)
 	int			n_digits;
 
 	n_digits = 0;
-	ft_dump_flags(p);
 	chars_until_format = ft_chars_until_format(s);
 	while (--chars_until_format >= 0)
 	{
-		if (ft_isdigit(*s))
-			n_digits++;
 		if (*s == '#')
 			p->flag_alt_form = *s;
 		if (*s == '+')
 			p->flag_sign = *s;
 		if (*s == ' ')
 			p->flag_blank = *s;
-		if (*s == '-' || *s == '0')
+		if (*s == '-' || *s == '0' || *s == '.')
 			p->flag_adjustment = *s;
 		if (*s == ' ' || *s == '0')
 			p->flag_padding_char = *s;
+		if (ft_isdigit(*s))
+			n_digits++;
 		s++;
 	}
 	ft_set_precision(p, n_digits);
