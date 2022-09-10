@@ -5,85 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 17:26:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/09 11:42:10 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/09/10 20:29:35 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2022/09/10 21:27:20 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Returns a line read from a file descriptor.
-
 #include "get_next_line.h"
+#include <unistd.h> /* read */
 
-char	*ft_fill_until_nl(int fd, char *rest)
+#include <stdio.h>
+
+void	ft_putstr_mod(const char *s)
 {
-	char	*buffer;
-	char	*buf;
-	int		n_read;
-	char	*temp;
-
-	buffer = ft_strjoin(rest, "");
-	if (rest == NULL)
-		free(rest);
-	rest = NULL;
-	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (buf == NULL)
+	while (s != NULL && *s != '\0')
 	{
-		free(buffer);
-		return (NULL);
-	}
-	ft_memset(buf, 0, BUFFER_SIZE + 1);
-	while (ft_strchr(buf, '\n') == 0 && fd != -1)
-	{
-		ft_memset(buf, 0, BUFFER_SIZE);
-		n_read = read(fd, buf, BUFFER_SIZE);
-		if (n_read > 0)
-		{
-			temp = ft_strjoin(buffer, buf);
-			free(buffer);
-			buffer = temp;
-		}
+		if (*s == '\n')
+			write(1, "\\n", 2);
 		else
-			break ;
+			write(1, s, 1);
+		s++;
 	}
-	free(buf);
-	if (n_read == -1 || fd == -1 || *buffer == '\0')
+}
+
+char	*ft_read_until(int fd)
+{
+	char	*buf;
+	int		read_return;
+
+	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE);
+	ft_memset(buf, '\0', BUFFER_SIZE);
+	read_return = 1;
+	while (ft_strchr(buf, '\n') == 0)
 	{
-		free(buffer);
-		return (NULL);
+		ft_memset(buf, '\0', BUFFER_SIZE);
+		read_return = read(fd, buf, BUFFER_SIZE);
+		if (read_return <= 0)
+			break;
+		ft_putstr_mod("--: ");ft_putstr_mod(buf);ft_putstr_mod("\t:--");
+		write(1, "\n", 1);
 	}
-	return (buffer);
+	if (read_return <= -1)
+			printf("errored reading");
+	else if (read_return == 0)
+		printf("Reached end of file.\n");
+	return (buf);
 }
 
 char	*get_next_line(int fd)
 {
-	char			*buffer;
-	char			*line;
-	static char		*rest = NULL;
-	int				len;
-
-	if (rest == NULL)
-		rest = ft_strdup("");
-	buffer = ft_fill_until_nl(fd, rest);
-	if (buffer == NULL)
-		return (NULL);
-	if (ft_strchr(buffer, '\n') == 0)
-		len = ft_strlen(buffer);
-	else
-		len = ft_strchr(buffer, '\n') - buffer;
-	line = ft_substr(buffer, 0, len + 1);
-	if (line == NULL)
-	{
-		free(rest);
-		free(buffer);
-		return (NULL);
-	}
-	free(rest);
-	rest = ft_substr(buffer, len + 1, ft_strlen(buffer) - len + 1);
-	if (rest == NULL)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	free(buffer);
+	char	*line = NULL;
+	printf("fd: %d\n", fd);
+	char	*buf = ft_read_until(fd);
+	ft_putstr_mod("bf: \"");ft_putstr_mod(buf);ft_putstr_mod("\"");
+	write(1, "\n", 1);
 	return (line);
 }
