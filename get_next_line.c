@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:26:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/22 20:29:17 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:42:10 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 {
 	char			*buffer;
 	char			*line;
-	static char		*rest;
+	static char		*rest = NULL;
 	int				len;
 
 	if (rest == NULL)
