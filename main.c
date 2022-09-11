@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:00:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/11 15:01:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/11 18:51:57 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,11 @@ int	main(void)
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	printf("fd: %d\n", fd);
 	counter = 3;
 	while (counter--)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
-			write(1, "(null)", 6);
-		else if (*line == '\0')
-			write(1, "\\0", 2);
-		else
+		if (line != NULL)
 		{
 			write(1, "Received: ", 10);
 			write(1, "\"", 1);
