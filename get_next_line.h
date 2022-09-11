@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:26:39 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/22 18:04:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:55:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h> /* malloc, free, size_t */
 # include <unistd.h> /* read (also close) */
 # include <sys/types.h>
+
+#include <stdio.h> /* PENDING REMOVAL */
 
 char	*get_next_line(int fd);
 void	*ft_memset(void *s, int c, size_t len);

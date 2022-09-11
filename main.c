@@ -6,14 +6,12 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:00:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/10 21:09:26 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:01:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <unistd.h> /* write, close */
 #include <fcntl.h> /* open */
-#include <stdlib.h> /* free */
 
 void	ft_putchar_mod(int c)
 {
@@ -31,7 +29,8 @@ int	main(void)
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	counter = 1;
+	printf("fd: %d\n", fd);
+	counter = 3;
 	while (counter--)
 	{
 		line = get_next_line(fd);
@@ -41,12 +40,15 @@ int	main(void)
 			write(1, "\\0", 2);
 		else
 		{
+			write(1, "Received: ", 10);
+			write(1, "\"", 1);
 			i = 0;
 			while (line[i] != '\0')
 				ft_putchar_mod(line[i++]);
+			write(1, "\"", 1);
 		}
 		free(line);
-		write(1, "&\n", 2);
+		write(1, "\n", 1);
 	}
 	close(fd);
 	return (0);

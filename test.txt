@@ -1,1 +1,3 @@
-hey
+hey there im testing a function that reads BUFFER_SIZE bytes of a file and returns a line.
+Furthermore this function should also store the remaing bytes if more than a line has been read/written in the buffer.
+Anyhow, this is the last line. 
