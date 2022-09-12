@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:00:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/11 18:51:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:41:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int	main(void)
 	int		i;
 	char	*line;
 
+	(void) i;
 	fd = open("test.txt", O_RDONLY);
-	counter = 3;
+	counter = 4;
 	while (counter--)
 	{
 		line = get_next_line(fd);
@@ -40,10 +41,9 @@ int	main(void)
 			i = 0;
 			while (line[i] != '\0')
 				ft_putchar_mod(line[i++]);
-			write(1, "\"", 1);
+			write(1, "\"\n", 2);
 		}
 		free(line);
-		write(1, "\n", 1);
 	}
 	close(fd);
 	return (0);
