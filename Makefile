@@ -77,7 +77,7 @@ all: $(NAME)
 
 -include $(DEPS)
 
-$(NAME):: libft
+$(NAME)::
 	@make -sC libft/
 	@cp -p libft/libft.a $(NAME)
 
