@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 08:36:27 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/11 18:50:52 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:00:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ char	*ft_strchr(const char *s, int c)
 	if ((char) c == '\0')
 		return ((char *) s);
 	return (0);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }
 
 void	*ft_memset(void *s, int c, size_t len)

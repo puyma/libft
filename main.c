@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:00:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/12 11:41:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/16 12:12:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	main(void)
 			i = 0;
 			while (line[i] != '\0')
 				ft_putchar_mod(line[i++]);
-			write(1, "\"\n", 2);
+			write(1, "\"", 1);
+			write(1, "\n", 1);
 		}
 		free(line);
 	}
