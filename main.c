@@ -28,23 +28,25 @@ int	main(void)
 	int		i;
 	char	*line;
 
-	(void) i;
 	fd = open("test.txt", O_RDONLY);
 	counter = 4;
 	while (counter--)
 	{
 		line = get_next_line(fd);
-		if (line != NULL)
+		write(1, "Received: ", 10);
+		if (line == NULL)
+			write(1, "NULL", 4);
+		else if (line != NULL)
 		{
-			write(1, "Received: ", 10);
-			write(1, "\"", 1);
 			i = 0;
+			write(1, "\"", 1);
 			while (line[i] != '\0')
 				ft_putchar_mod(line[i++]);
 			write(1, "\"", 1);
-			write(1, "\n", 1);
 		}
-		free(line);
+		write(1, "\n", 1);
+		if (!line)
+			free(line);
 	}
 	close(fd);
 	return (0);

@@ -12,24 +12,30 @@
 
 #include "get_next_line.h"
 
-char	*ft_read_until(int fd, int c, char **buffer);
-char	*ft_get_line(char **buffer);
+static char	*ft_read_until(int fd, int c);
+static char	*ft_get_line(char *buffer);
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	*line;
+	static char	*buffer;
+	char		*line;
 	
 	buffer = ft_read_until(fd, '\n');
-	line = ft_get_line(&buffer);
+	line = ft_get_line(buffer);
+	//buffer = ft_set_buffer(buffer);
 	return (line);
 }
 
-char	*ft_read_until(int fd, int c, char **buffer)
+static char	*ft_read_until(int fd, int c)
 {
 	char	*buf;
+	char	*buffer;
+	//char	*temp;
 	int		read_value;
 
+	//buffer = NULL;
+	if (read(fd, NULL, 0))
+		return (NULL);
 	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE);
 	if (buf == NULL)
 		return (NULL);
@@ -40,27 +46,66 @@ char	*ft_read_until(int fd, int c, char **buffer)
 		read_value = read(fd, buf, BUFFER_SIZE);
 		if (read_value <= 0)
 			break ;
-		*buffer = ft_strjoin(*buffer, buf);
+		if (buffer == '\0')
+			write(1, "hell yes\n", 9);
+		/*
+		if (buffer != NULL)
+			buffer = ft_strjoin(buffer, buf);
+		else
+			buffer = buf;
+		*/
 	}
-	return (NULL);
+	return (buffer);
 }
 
-char	*ft_get_line(char **buffer)
+static char	*ft_get_line(char *buffer)
 {
+	int		len;
 	char	*line;
 
-	(void) *buffer;
-	line = NULL;
+	if (!buffer)
+		return (NULL);
+	if (ft_strchr(buffer, '\n') == 0)
+		return (buffer);
+	len = ft_strchr(buffer, '\n') - buffer + 1;
+	line = ft_substr(buffer, 0, len);
 	return (line);
 }
 
-size_t	ft_strlen(const char *s)
+
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	while (s[i] != '\0')
+	len = ft_strlen(dst);
+	if (dstsize <= len)
+		return (ft_strlen(src) + dstsize);
+	while (src[i] != '\0' && (i + len < dstsize - 1))
+	{
+		dst[i + len] = src[i];
 		i++;
-	return (i);
+	}
+	dst[i + len] = '\0';
+	return (len + ft_strlen(src));
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*strjoin;
+	size_t	len_s1;
+	size_t	len_s2;
+
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	strjoin = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (strjoin == NULL)
+		return (0);
+	ft_memset(strjoin, 0, len_s1 + len_s2 + 1);
+	ft_strlcat(strjoin, s1, len_s1 + 1);
+	ft_strlcat(strjoin, s2, len_s1 + len_s2 + 1);
+	return (strjoin);
 }
 

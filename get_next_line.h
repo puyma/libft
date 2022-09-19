@@ -16,6 +16,7 @@
 # include <stdlib.h> /* malloc, free, size_t */
 # include <unistd.h> /* read (also close) */
 # include <sys/types.h>
+# include <limits.h>
 
 # include <stdio.h> /* PENDING REMOVAL */
 
