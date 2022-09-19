@@ -6,37 +6,45 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:29:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/16 12:54:33 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:45:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_read_until(int fd, int c);
+static char	*ft_read_until(int fd, int c, char *buffer);
 static char	*ft_get_line(char *buffer);
+static char	*ft_leftovers(char *leftovers);
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s != NULL && *s != '\0' && s[i] != '\0')
+		i++;
+	return (i);
+}
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*line;
-	
-	buffer = ft_read_until(fd, '\n');
+
+	buffer = ft_read_until(fd, '\n', buffer);
 	line = ft_get_line(buffer);
-	//buffer = ft_set_buffer(buffer);
+	buffer = ft_leftovers(buffer);
 	return (line);
 }
 
-static char	*ft_read_until(int fd, int c)
+static char	*ft_read_until(int fd, int c, char *buffer)
 {
 	char	*buf;
-	char	*buffer;
-	//char	*temp;
 	int		read_value;
 
-	//buffer = NULL;
 	if (read(fd, NULL, 0))
 		return (NULL);
-	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE);
+	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buf == NULL)
 		return (NULL);
 	ft_memset(buf, '\0', BUFFER_SIZE);
@@ -46,14 +54,15 @@ static char	*ft_read_until(int fd, int c)
 		read_value = read(fd, buf, BUFFER_SIZE);
 		if (read_value <= 0)
 			break ;
-		if (buffer == '\0')
-			write(1, "hell yes\n", 9);
-		/*
-		if (buffer != NULL)
-			buffer = ft_strjoin(buffer, buf);
-		else
-			buffer = buf;
-		*/
+		if (buffer == NULL)
+			buffer = "";
+		buffer = ft_strjoin(buffer, buf);
+	}
+	free(buf);
+	if (!buffer || *buffer == '\0')
+	{
+		free(buffer);
+		return (NULL);
 	}
 	return (buffer);
 }
@@ -72,40 +81,16 @@ static char	*ft_get_line(char *buffer)
 	return (line);
 }
 
-
-
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+static char	*ft_leftovers(char *buffer)
 {
-	size_t	i;
-	size_t	len;
+	int		len;
+	char	*leftovers;
 
-	i = 0;
-	len = ft_strlen(dst);
-	if (dstsize <= len)
-		return (ft_strlen(src) + dstsize);
-	while (src[i] != '\0' && (i + len < dstsize - 1))
-	{
-		dst[i + len] = src[i];
-		i++;
-	}
-	dst[i + len] = '\0';
-	return (len + ft_strlen(src));
+	if (!buffer || ft_strchr(buffer, '\n') == 0)
+		return (NULL);
+	len = (int) ft_strlen(ft_strchr(buffer, '\n'));
+	leftovers = ft_substr(ft_strchr(buffer, '\n') + 1, 0, len);
+	free(buffer);
+	buffer = NULL;
+	return (leftovers);
 }
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*strjoin;
-	size_t	len_s1;
-	size_t	len_s2;
-
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	strjoin = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (strjoin == NULL)
-		return (0);
-	ft_memset(strjoin, 0, len_s1 + len_s2 + 1);
-	ft_strlcat(strjoin, s1, len_s1 + 1);
-	ft_strlcat(strjoin, s2, len_s1 + len_s2 + 1);
-	return (strjoin);
-}
-

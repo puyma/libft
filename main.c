@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 19:00:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/16 12:12:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:14:53 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	main(void)
 			write(1, "\"", 1);
 		}
 		write(1, "\n", 1);
-		if (!line)
-			free(line);
+		free(line);
 	}
 	close(fd);
 	return (0);
