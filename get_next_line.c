@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:29:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/20 14:54:59 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:39:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	buffer = ft_read_until(fd, '\n', buffer);
+	if (buffer == NULL)
+		return (0);
 	line = ft_get_line(buffer);
 	buffer = ft_leftovers(buffer);
 	return (line);
@@ -82,6 +84,11 @@ static char	*ft_get_line(char *buffer)
 		return (buffer);
 	len = ft_strchr(buffer, '\n') - buffer + 1;
 	line = ft_substr(buffer, 0, len);
+	if (line == NULL || *line == '\0')
+	{
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
 
@@ -96,7 +103,7 @@ static char	*ft_leftovers(char *buffer)
 	leftovers = ft_substr(ft_strchr(buffer, '\n') + 1, 0, len);
 	free(buffer);
 	buffer = NULL;
-	if (leftovers != NULL && *leftovers == '\0')
+	if (leftovers == NULL || *leftovers == '\0')
 	{
 		free(leftovers);
 		return (NULL);
