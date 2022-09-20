@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:29:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/20 16:39:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:45:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,7 @@
 static char	*ft_read_until(int fd, int c, char *buffer);
 static char	*ft_get_line(char *buffer);
 static char	*ft_leftovers(char *leftovers);
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+static int	ft_read_loop(int fd, char **buf, char **buffer);
 
 char	*get_next_line(int fd)
 {
@@ -41,28 +32,23 @@ char	*get_next_line(int fd)
 
 static char	*ft_read_until(int fd, int c, char *buffer)
 {
-	char	*buf;
-	char	*temp;
-	int		read_value;
+	char			*buf;
+	unsigned char	*cpy;
+	size_t			cpy_len;
 
 	if (read(fd, NULL, 0) || BUFFER_SIZE == 0)
 		return (NULL);
 	buf = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buf == NULL)
 		return (NULL);
-	ft_memset(buf, '\0', BUFFER_SIZE + 1);
+	cpy = (unsigned char *) buf;
+	cpy_len = BUFFER_SIZE + 1;
+	while (cpy_len--)
+		*cpy++ = 0;
 	while (ft_strchr(buf, c) == 0)
 	{
-		ft_memset(buf, '\0', BUFFER_SIZE);
-		read_value = read(fd, buf, BUFFER_SIZE);
-		if (read_value <= 0)
+		if (ft_read_loop(fd, &buf, &buffer) == -1)
 			break ;
-		if (buffer == NULL)
-			buffer = "\0";
-		temp = ft_strjoin(buffer, buf);
-		if (*buffer != '\0')
-			free(buffer);
-		buffer = temp;
 	}
 	free(buf);
 	if (!buffer || *buffer == '\0')
@@ -71,6 +57,29 @@ static char	*ft_read_until(int fd, int c, char *buffer)
 		return (NULL);
 	}
 	return (buffer);
+}
+
+static int	ft_read_loop(int fd, char **buf, char **buffer)
+{
+	char			*temp;
+	int				read_value;
+	unsigned char	*cpy;
+	size_t			cpy_len;
+
+	cpy = (unsigned char *) *buf;
+	cpy_len = BUFFER_SIZE;
+	while (cpy_len--)
+		*cpy++ = 0;
+	read_value = read(fd, *buf, BUFFER_SIZE);
+	if (read_value <= 0)
+		return (-1);
+	if (*buffer == NULL)
+		*buffer = "\0";
+	temp = ft_strjoin(*buffer, *buf);
+	if (buffer[0][0] != '\0')
+		free(*buffer);
+	*buffer = temp;
+	return (0);
 }
 
 static char	*ft_get_line(char *buffer)

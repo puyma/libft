@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 08:36:27 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/19 13:47:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:45:30 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-void	*ft_memset(void *s, int c, size_t len)
+size_t	ft_strlen(const char *s)
 {
-	unsigned char	*cpy;
+	int	i;
 
-	cpy = s;
-	while (len--)
-		*cpy++ = c;
-	return (s);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
@@ -55,16 +55,21 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*strjoin;
-	size_t	len_s1;
-	size_t	len_s2;
+	char			*strjoin;
+	size_t			len_s1;
+	size_t			len_s2;
+	unsigned char	*cpy;
+	size_t			cpy_len;
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	strjoin = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (strjoin == NULL)
 		return (0);
-	ft_memset(strjoin, 0, len_s1 + len_s2 + 1);
+	cpy = (unsigned char *) strjoin;
+	cpy_len = len_s1 + len_s2 + 1;
+	while (cpy_len--)
+		*cpy++ = 0;
 	ft_strlcat(strjoin, s1, len_s1 + 1);
 	ft_strlcat(strjoin, s2, len_s1 + len_s2 + 1);
 	return (strjoin);
@@ -81,7 +86,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	else if (ft_strlen(s + start) < len)
 		len = ft_strlen(s + start);
-	substr = (char *) malloc(sizeof(*s) * len + 1);
+	substr = (char *) malloc(sizeof(char) * len + 1);
 	if (substr == NULL)
 		return (0);
 	i = 0;
@@ -90,3 +95,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
+
+/*
+void	*ft_memset(void *s, int c, size_t len)
+{
+	unsigned char	*cpy;
+
+	cpy = s;
+	while (len--)
+		*cpy++ = c;
+	return (s);
+}
+*/
