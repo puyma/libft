@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:29:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/20 14:31:25 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:54:59 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (*s != '\0')
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 
 	buffer = ft_read_until(fd, '\n', buffer);
 	line = ft_get_line(buffer);
-	buffer = ft_leftovers(buffer);	
+	buffer = ft_leftovers(buffer);
 	return (line);
 }
 
@@ -82,8 +82,6 @@ static char	*ft_get_line(char *buffer)
 		return (buffer);
 	len = ft_strchr(buffer, '\n') - buffer + 1;
 	line = ft_substr(buffer, 0, len);
-	if (line == NULL)
-		return (NULL);
 	return (line);
 }
 
@@ -98,5 +96,10 @@ static char	*ft_leftovers(char *buffer)
 	leftovers = ft_substr(ft_strchr(buffer, '\n') + 1, 0, len);
 	free(buffer);
 	buffer = NULL;
+	if (leftovers != NULL && *leftovers == '\0')
+	{
+		free(leftovers);
+		return (NULL);
+	}
 	return (leftovers);
 }
