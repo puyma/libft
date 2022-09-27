@@ -6,11 +6,11 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/09/27 19:06:14 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/09/27 19:39:58 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:= libftprintf.a
+NAME			:= libft.a
 AUTHOR			?= mpuig-ma
 
 CC				:= gcc
