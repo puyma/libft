@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/08/07 19:18:56 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/09/27 19:34:17 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ STRING_FILES	= string/ft_bzero.c \
 				  string/ft_strnstr.c \
 				  string/ft_strrchr.c \
 				  string/ft_strtrim.c \
-				  string/ft_substr.c
+				  string/ft_substr.c \
+				  string/get_next_line.c
 
 SRC_FILES		= $(CTYPE_FILES) \
 				  $(IO_FILES) \
