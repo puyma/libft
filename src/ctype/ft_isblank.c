@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:18:54 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/27 20:22:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:33:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 int	ft_isblank(int c)
 {
 	if (c == ' ' || c == '\t')
-		return (0);
-	else
 		return (1);
+	return (0);
 }
