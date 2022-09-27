@@ -2,13 +2,12 @@
 Implementació de `libc`. Source files ordenats més o menys en categories en funció de com es troben originalment en algunes implementacions de `libc`.
 
 ![printf badge](https://img.shields.io/badge/printf-OK-green)
-![get next line badge](https://img.shields.io/badge/get%20next%20line-KO-red)
-![subject compilant](https://img.shields.io/badge/subject-KO-red)
+![get next line badge](https://img.shields.io/badge/get%20next%20line-OK-green)
 ![norminette compilant](https://img.shields.io/badge/norminette-OK-green)
 
 ### Subject's versions
 
-libft is version `15`, printf is version `9.2`, get_next_line is version `10`
+libft is version `15`, printf is version `9.2`, get_next_line is version `10`.
 
 ## Referències
 - [stdlib.guide](https://stdlib.guide)
