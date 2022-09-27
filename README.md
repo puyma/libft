@@ -21,8 +21,6 @@ libft is version `15`, ft_printf is version `9.2`, get_next_line is version `10`
 - [makefile-that-places-object-files-into-an-alternate-directory-bin](https://codereview.stackexchange.com/questions/74136/makefile-that-places-object-files-into-an-alternate-directory-bin)
 - [makefile-learning](https://yuukidach.github.io/2019/08/05/makefile-learning/)
 - [building-from-different-source-folders-to-different-target-folders](https://riptutorial.com/makefile/example/21376/building-from-different-source-folders-to-different-target-folders)
-
-## GNU MAKE STUFF
 - [Managing projects with GNU Make - Chapter 02](https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch02.html#pattern_rules)
 - [Makefile tutorial](https://makefiletutorial.com)
 - [Makefile guide by @michaelfromyeg](https://michaelfromyeg.github.io/makefiles/#fancy-makefiles)
