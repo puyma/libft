@@ -6,11 +6,15 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:29:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/27 19:30:46 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:38:42 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
+
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 1
+#endif
 
 /*
 ** This get_next_line version doesn't use ft_memset (or bzero)
