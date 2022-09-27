@@ -7,7 +7,7 @@ Implementació de `libc`. Source files ordenats més o menys en categories en fu
 
 ### Subject's versions
 
-libft is version `15`, printf is version `9.2`, get_next_line is version `10`.
+libft is version `15`, ft_printf is version `9.2`, get_next_line is version `10`.
 
 ## Referències
 - [stdlib.guide](https://stdlib.guide)
