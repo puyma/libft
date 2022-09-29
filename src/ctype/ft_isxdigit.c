@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:45:17 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 17:48:21 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:41:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 ** of locale, this includes the following characters only: 0-9, A-F, a-f. 
 */
 
-#include "libft.h"
+#include "ft_ctype.h"
 
 int	ft_isxdigit(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:04:05 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 18:04:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:52:27 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include "ft_printf.h"
+# include "../libft.h"
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);

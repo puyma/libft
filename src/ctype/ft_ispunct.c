@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:34:59 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 17:44:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:41:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** character tests true. 
 */
 
-#include "libft.h"
+#include "ft_ctype.h"
 
 int	ft_ispunct(int c)
 {

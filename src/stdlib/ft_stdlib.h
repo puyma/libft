@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 18:02:41 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:53:37 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../string/ft_string.h"
 # include <stdlib.h> /* malloc */
+# include "../libft.h"
 
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
