@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:40:40 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 17:45:03 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:40:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** and returns non-zero if the character tests true.
 */
 
-#include "libft.h"
+#include "ft_ctype.h"
 
 int	ft_isgraph(int c)
 {

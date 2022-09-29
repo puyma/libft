@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:26:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:49:51 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../libft.h"
+//# include "../libft.h"
 # include "ft_io.h"
 # include "../stdlib/ft_stdlib.h"
 # include "../math/ft_math.h"

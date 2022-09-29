@@ -6,14 +6,13 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/09/27 19:41:55 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/09/29 19:01:39 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= libft.a
 AUTHOR			?= mpuig-ma
 
-CC				:= gcc
 CFLAGS			:= -Wall -Werror -Wextra -MMD
 RM				:= rm -rf
 SRC_DIR			:= src
@@ -40,7 +39,7 @@ endef
 
 # .o to .c rule
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	$(call msg,Compiled,$(notdir $<))

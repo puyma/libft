@@ -6,12 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:02:23 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/06/13 14:52:18 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:56:51 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stdlib.h"
 
+/*
 static int	ft_count_digits(int n)
 {
 	int	count;
@@ -28,13 +29,14 @@ static int	ft_count_digits(int n)
 	}
 	return (count);
 }
+*/
 
 char	*ft_itoa(int n)
 {
 	char	*itoa;
 	int		count_digits;
 
-	count_digits = ft_count_digits(n);
+	count_digits = ft_count_digits(n, 10);
 	if (n <= 0 && n != -2147483648)
 		count_digits++;
 	itoa = (char *) malloc(sizeof(char) * count_digits + 1);

@@ -6,12 +6,14 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:59:19 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/27 19:49:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:52:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_CTYPE_H
 # define FT_CTYPE_H
+
+# include "../libft.h"
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
