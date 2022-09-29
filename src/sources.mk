@@ -6,16 +6,19 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/08/07 19:18:56 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/09/27 20:40:26 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CTYPE_FILES		= ctype/ft_isalnum.c \
 				  ctype/ft_isalpha.c \
 				  ctype/ft_isascii.c \
+				  ctype/ft_isblank.c \
+				  ctype/ft_iscntrl.c \
 				  ctype/ft_isdigit.c \
 				  ctype/ft_islower.c \
 				  ctype/ft_isprint.c \
+				  ctype/ft_isspace.c \
 				  ctype/ft_isupper.c \
 				  ctype/ft_tolower.c \
 				  ctype/ft_toupper.c
@@ -64,7 +67,8 @@ STRING_FILES	= string/ft_bzero.c \
 				  string/ft_strnstr.c \
 				  string/ft_strrchr.c \
 				  string/ft_strtrim.c \
-				  string/ft_substr.c
+				  string/ft_substr.c \
+				  string/get_next_line.c
 
 SRC_FILES		= $(CTYPE_FILES) \
 				  $(IO_FILES) \

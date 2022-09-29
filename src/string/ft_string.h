@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:05:04 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 18:05:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:19:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_STRING_H
 
 # include <stdlib.h> /* malloc, free, size_t */
+# include <unistd.h> /* read */
+# include <sys/types.h>
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t len);
@@ -35,5 +37,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+char	*get_next_line(int fd);
 
 #endif /* ft_string.h */

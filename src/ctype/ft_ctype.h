@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:59:19 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 17:59:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:49:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,12 @@ int	ft_isupper(int c);
 int	ft_islower(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
+
+int	ft_isblank(int c);
+int	ft_iscntrl(int c);
+int	ft_isgraph(int c);
+int	ft_ispunct(int c);
+int	ft_isspace(int c);
+int	ft_isxdigit(int c);
 
 #endif /* ft_ctype.h */
