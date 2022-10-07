@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/09/29 19:01:39 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/10/03 20:29:07 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,12 +67,12 @@ all: $(NAME)
 
 -include $(DEPS)
 
-$(NAME): $(OBJS)
+$(NAME):: $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 	$(call msg,Linked,$@)
 
-#$(NAME)::
-#	$(call msg,Done!)
+$(NAME)::
+	$(call msg,Done!)
 
 clean:
 	@$(RM) $(BUILD_DIR)
