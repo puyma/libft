@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/10/03 20:29:07 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/10/11 15:48:42 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,9 @@ $(NAME):: $(OBJS)
 	$(call msg,Linked,$@)
 
 $(NAME)::
+ifeq (,$(findstring s,$(MAKEFLAGS)))
 	$(call msg,Done!)
+endif
 
 clean:
 	@$(RM) $(BUILD_DIR)
