@@ -14,6 +14,20 @@
 #include "../stdlib/ft_stdlib.h" /* ft_illtohex() */
 #include "ft_printf.h" /* stdarg, ft_formats, t_fptr */
 
+static void	ft_do_flag_adjustment(t_printout *p, char c, int length)
+{
+	if (c == '\0')
+		c = ' ';
+	if (length > p->n_precision && p->flag_sign == '+')
+		length = 0;
+	else if (length > p->n_precision)
+		length = 1;
+	else
+		length = p->n_precision - length;
+	while (--length >= 0 && p->n_written != -1)
+		ft_ensure_print(p, ft_putchar(c));
+}
+
 t_fptr	ft_formats(const char *s)
 {
 	t_fptr	do_func;

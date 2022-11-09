@@ -6,8 +6,9 @@ RM			:= rm -f
 
 SRC_DIR		:= src
 BUILD_DIR	:= build
-SRC_FILES	:= io/ft_formats.c \
+SRC_FILES	:= io/ft_ensure_print.c \
 			   io/ft_flags.c \
+			   io/ft_formats.c \
 			   io/ft_printf.c \
 			   io/ft_put_utils.c \
 			   math/ft_count_digits.c \
@@ -20,28 +21,6 @@ NOCOLOR		:= \033[0m
 GREEN		:= \033[0;32m
 CYAN		:= \033[0;36m
 YELLOW		:= \033[33m
-
-# ASCII art
-# font used is bigmoney-ne
-#
-# Had to duplicate each $ sign so as to escape them 
-# from the GNU Make interpreter...
-
-define msg_ascii
-@echo "$(NOCOLOR)" 
-@echo '                     /$$$$             /$$$$      /$$$$$$$$$$$$ '
-@echo '                    |__/            | $$$$     /$$$$__  $$$$'
-@echo '  /$$$$$$$$$$$$   /$$$$$$$$$$$$  /$$$$ /$$$$$$$$$$$$$$  /$$$$$$$$$$$$  | $$$$  \__/'
-@echo ' /$$$$__  $$$$ /$$$$__  $$$$| $$$$| $$$$__  $$$$|_  $$$$_/  | $$$$$$$$    '
-@echo '| $$$$  \ $$$$| $$$$  \__/| $$$$| $$$$  \ $$$$  | $$$$    | $$$$_/    '
-@echo '| $$$$  | $$$$| $$$$      | $$$$| $$$$  | $$$$  | $$$$ /$$$$| $$$$      '
-@echo '| $$$$$$$$$$$$$$/| $$$$      | $$$$| $$$$  | $$$$  |  $$$$$$$$/| $$$$      '
-@echo '| $$$$____/ |__/      |__/|__/  |__/   \___/  |__/      '
-@echo '| $$$$                                                  '
-@echo '| $$$$                                                  '
-@echo "|__/  by $(AUTHOR)"
-@echo "$(NOCOLOR)"
-endef
 
 # Message after compiling
 
@@ -86,8 +65,8 @@ $(NAME):: $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 	$(call msg_comp,Linked,$(NAME))
 
-$(NAME)::
-	$(call msg_end)
+#$(NAME)::
+#	$(call msg_end)
 
 bonus: all
 
