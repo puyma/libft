@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/10/11 15:48:42 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2022/12/01 16:30:47 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,11 @@ all: $(NAME)
 -include $(DEPS)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
+	@echo "Linked $(GREEN)$(NAME)$(NOCOLOR)"
 
 clean:
-	$(RM) $(BUILD_DIR)
+	$(RM) $(BUILD_DIR)/
 
 fclean: clean
 	$(RM) $(NAME)
