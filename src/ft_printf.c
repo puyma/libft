@@ -16,6 +16,7 @@
 #include "../libft/libft.h"
 
 #include <stdio.h>
+#include <limits.h>
 
 #define FORMATS "cspdiuxX"
 #define FLAGS "%-0.# +"
@@ -30,15 +31,22 @@ typedef struct s_printout
 }				t_printout;
 
 int	ft_printf(const char *format, ...);
+
 int	ft_print_format(t_printout *p);
 int	(*ft_which_format(char c))(t_printout *p);
+
 int	ft_isformat(int c);
 int	ft_isflag(int c);
 int	ft_parse_flags(t_printout *p);
+
 int	ft_print_cs(t_printout *p);
 int	ft_print_diu(t_printout *p);
 int	ft_print_xp(t_printout *p);
+
 int	ft_putstr(const char *str);
+int	ft_count_digits(int n, int base);
+int	ft_power(int base, int exponent);
+int	ft_putnbr(int n, int base);
 
 // percnt
 
@@ -46,13 +54,20 @@ int	main(void)
 {
 	ft_printf("char %c\n", '&');
 	ft_printf("single %%\n");
-	ft_printf("string %s\n", "string");
+	ft_printf("string %s\n", "hey there");
 	ft_printf("decimal %d\n", 69);
 	ft_printf("integer %i\n", 69);
 	ft_printf("pointer %p\n", 69);
 	ft_printf("unsigned %p\n", 69);
 	ft_printf("hexadecimal %x\n", 69);
 	ft_printf("uppercase hex %X\n", 69);
+	ft_printf("--\n");
+	int i = 0;
+	ft_printf("flag test #%d %.d\n", ++i, 69);
+	ft_printf("flag test #%d %04s\n", ++i, "string");
+	ft_printf("--\n");
+	//printf("digits test: %d\n", ft_count_digits(1, 10));
+	//printf("Power test: %d\n", ft_power(9, 4));
 	return (0);
 }
 
@@ -111,15 +126,91 @@ int	(*ft_which_format(char c))(t_printout *p)
 	return (0);
 }
 
+int	ft_putnbr(int n, int base)
+{
+	long int	nn;
+	int			n_digits;
+	int			c;
+
+	nn = (long int) n;
+	n_digits = ft_count_digits(n, base);
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		nn *= -1;
+	}
+	while (n_digits > 0)
+	{
+		c = nn / (ft_power(base, n_digits - 1));
+		nn = nn - c * (ft_power(base, n_digits - 1));
+		c += '0';
+		write(1, &c, 1);
+		n_digits--;
+	}
+	return (0);
+}
+
+int	ft_count_digits(int n, int base)
+{
+	int	n_digits;
+	int	nn;
+
+	n_digits = 0;
+	nn = n;
+	if (n < 0)
+		nn *= -1;
+	else if (n == 0)
+		return (1);
+	while (nn > 0)
+	{
+		nn /= base;
+		n_digits++;
+	}
+	return (n_digits);
+}
+
+int	ft_power(int base, int exponent)
+{
+	int	pow;
+
+	if (exponent == 0)
+		return (1);
+	pow = base;
+	while (--exponent > 0)
+		pow *= base;
+	return (pow);
+}
+
 int	ft_print_cs(t_printout *p)
 {
-	write(1, (p->format + 1), 1);
+	int		c;
+	char	*s;
+	char	f;
+
+	s = NULL;
+	f = *(p->format + 1);
+	if (f == '%')
+		write(1, &f, 1);
+	else if (f == 'c')
+	{
+		c = va_arg(p->varg, int);
+		write(1, &c, 1);
+	}
+	else if (f == 's')
+	{
+		s = va_arg(p->varg, char *);
+		ft_putstr(s);
+	}
+	//write(1, (p->format + 1), 1);
 	return (0);
 }
 
 int	ft_print_diu(t_printout *p)
 {
-	write(1, (p->format + 1), 1);
+	if (*(p->format + 1) == 'd' || *(p->format + 1) == 'i')
+		ft_putnbr(-69, 10);
+	else
+		write(1, (p->format + 1), 1);
 	return (0);
 }
 
@@ -171,6 +262,5 @@ int	ft_putstr(const char *str)
 			n_written += return_value;
 		string++;
 	}
-	printf("ft_putstr> %d\n", n_written);
 	return (n_written);
 }
