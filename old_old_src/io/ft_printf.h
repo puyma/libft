@@ -39,9 +39,9 @@ typedef struct s_printout
 	unsigned char	flag_alt_form;
 	unsigned char	flag_adjustment;
 	unsigned char	flag_padding_char;
-	int				flag_field_width;
 	int				n_precision;
 	int				n_written;
+
 }					t_printout;
 
 typedef void	(*t_fptr)(va_list *v, t_printout *p, const char *s);
@@ -57,6 +57,5 @@ void	ft_formats_xp(va_list *v, t_printout *p, const char *s);
 
 void	ft_manage_flags(t_printout *p);
 void	ft_dump_flags(t_printout *p);
-void	ft_do_flag_adjustment(t_printout *p, char c, int length);
 
 #endif /* ft_printf_h */
