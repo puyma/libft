@@ -59,7 +59,7 @@ int	main(void)
 	ft_printf("single %%\n");
 	ft_printf("string %s\n", "hey there");
 	ft_printf("decimal %d\n", 69);
-	ft_printf("integer %i\n", 69);
+	ft_printf("integer %i\n", 69 * -1);
 	ft_printf("pointer %p\n", 69);
 	ft_printf("unsigned %p\n", 69);
 	ft_printf("hexadecimal %x\n", 69);
@@ -68,6 +68,7 @@ int	main(void)
 	i = 0;
 	ft_printf("flag test #%d %.d\n", ++i, 69);
 	ft_printf("flag test #%d %04s\n", ++i, "string");
+	ft_printf("flag test #%d %0%\n", ++i);
 	ft_printf("--\n");
 	return (0);
 }
@@ -113,7 +114,6 @@ int	ft_print_format(t_printout *p)
 		pf = ft_which_format(*(p->format));
 	if (pf != NULL)
 		pf(p);
-	//p->format++;
 	return (0);
 }
 
@@ -221,9 +221,9 @@ int	ft_print_cs(t_printout *p)
 
 int	ft_print_diu(t_printout *p)
 {
-	char		f;
-	int			di;
-	unsigned	u;
+	char			f;
+	int				di;
+	unsigned int	u;
 
 	f = *(p->format);
 	if (f == 'd' || f == 'i')
@@ -233,7 +233,7 @@ int	ft_print_diu(t_printout *p)
 	}
 	else if (f == 'u')
 	{
-		u = va_arg(p->varg, unsigned);
+		u = va_arg(p->varg, unsigned int);
 		ft_putnbr(u, 10);
 	}
 	return (0);
