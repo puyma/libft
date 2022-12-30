@@ -45,11 +45,12 @@ int	ft_print_diu(t_printout *p);
 int	ft_print_xp(t_printout *p);
 
 int	ft_putstr(const char *str);
-int	ft_count_digits(int n, int base);
-int	ft_power(int base, int exponent);
-int	ft_putnbr(int n, int base);
+int	ft_count_digits(long int n, int base);
+unsigned long int	ft_power(int base, int exponent);
+int	ft_putnbr(long int n, int base);
 
 // percnt
+// use union for dealing with d, i or u.
 
 int	main(void)
 {
@@ -60,11 +61,11 @@ int	main(void)
 	ft_printf("string %s.\n", "hey there");
 	ft_printf("decimal %d.\n", 69);
 	ft_printf("integer %i.\n", 69 * -1);
-	ft_printf("pointer %p.\n", 69);
-	ft_printf("unsigned %p.\n", 69);
+	ft_printf("pointer %p.\n", &i);
+	ft_printf("unsigned %u.\n", UINT_MAX);
 	ft_printf("hexadecimal %x.\n", 69);
 	ft_printf("uppercase hex %X.\n", 69);
-	ft_printf("--\n");
+	ft_printf("--\n"); 
 	i = 0;
 	ft_printf("flag test #%d %.d.\n", ++i, 69);
 	ft_printf("flag test #%d %04s.\n", ++i, "string");
@@ -72,6 +73,7 @@ int	main(void)
 	ft_printf("flag test #%d %0.\n", ++i);
 	ft_printf("flag test #%d %+d.\n", ++i, 420);
 	ft_printf("--\n");
+	printf("p: %p.\n", &i);
 	return (0);
 }
 
@@ -119,14 +121,22 @@ int	ft_print_format(t_printout *p)
 	return (0);
 }
 
+int	ft_print_xp(t_printout *p)
+{
+	//write(1, (p->format), 1);
+	unsigned int u = va_arg(p->varg, unsigned int);
+	ft_putnbr((long int) u, 16);
+	return (0);
+}
+
 int	(*ft_which_format(char c))(t_printout *p)
 {
 	if (c == '%' || c == 'c' || c == 's')
 		return (ft_print_cs);
-	else if (c == 'p' || c == 'x' || c == 'X')
-		return (ft_print_cs);
 	else if (c == 'd' || c == 'i' || c == 'u')
 		return (ft_print_diu);
+	else if (c == 'x' || c == 'X' || c == 'p')
+		return (ft_print_xp);
 	return (0);
 }
 
@@ -149,7 +159,7 @@ int	ft_parse_flags(t_printout *p)
 	return (p->n_flags);
 }
 
-int	ft_putnbr(int n, int base)
+int	ft_putnbr(long int n, int base)
 {
 	long int	nn;
 	int			n_digits;
@@ -173,10 +183,10 @@ int	ft_putnbr(int n, int base)
 	return (0);
 }
 
-int	ft_count_digits(int n, int base)
+int	ft_count_digits(long int n, int base)
 {
-	int	n_digits;
-	int	nn;
+	int			n_digits;
+	long int	nn;
 
 	n_digits = 0;
 	nn = n;
@@ -192,7 +202,7 @@ int	ft_count_digits(int n, int base)
 	return (n_digits);
 }
 
-int	ft_power(int base, int exponent)
+unsigned long int	ft_power(int base, int exponent)
 {
 	int	pow;
 
@@ -242,14 +252,8 @@ int	ft_print_diu(t_printout *p)
 	else if (f == 'u')
 	{
 		u = va_arg(p->varg, unsigned int);
-		ft_putnbr(u, 10);
+		ft_putnbr((long int) u, 10);
 	}
-	return (0);
-}
-
-int	ft_print_xp(t_printout *p)
-{
-	write(1, (p->format + 1), 1);
 	return (0);
 }
 
