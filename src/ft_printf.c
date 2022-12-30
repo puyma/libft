@@ -55,20 +55,22 @@ int	main(void)
 {
 	int	i;
 
-	ft_printf("char %c\n", '&');
-	ft_printf("single %%\n");
-	ft_printf("string %s\n", "hey there");
-	ft_printf("decimal %d\n", 69);
-	ft_printf("integer %i\n", 69 * -1);
-	ft_printf("pointer %p\n", 69);
-	ft_printf("unsigned %p\n", 69);
-	ft_printf("hexadecimal %x\n", 69);
-	ft_printf("uppercase hex %X\n", 69);
+	ft_printf("char %c.\n", '&');
+	ft_printf("single %%.\n");
+	ft_printf("string %s.\n", "hey there");
+	ft_printf("decimal %d.\n", 69);
+	ft_printf("integer %i.\n", 69 * -1);
+	ft_printf("pointer %p.\n", 69);
+	ft_printf("unsigned %p.\n", 69);
+	ft_printf("hexadecimal %x.\n", 69);
+	ft_printf("uppercase hex %X.\n", 69);
 	ft_printf("--\n");
 	i = 0;
-	ft_printf("flag test #%d %.d\n", ++i, 69);
-	ft_printf("flag test #%d %04s\n", ++i, "string");
-	ft_printf("flag test #%d %0%\n", ++i);
+	ft_printf("flag test #%d %.d.\n", ++i, 69);
+	ft_printf("flag test #%d %04s.\n", ++i, "string");
+	ft_printf("flag test #%d %0%.\n", ++i);
+	ft_printf("flag test #%d %0.\n", ++i);
+	ft_printf("flag test #%d %+d.\n", ++i, 420);
 	ft_printf("--\n");
 	return (0);
 }
@@ -135,9 +137,15 @@ int	ft_parse_flags(t_printout *p)
 	p->n_flags = 0;
 	c = *(p->format);
 	if (c == '%')
+	{
 		write(1, &c, 1);
+	}
 	else
-		write(1, &c, 1);
+	{
+		ft_printf("(flag: %c)", c);
+		//write(1, &c, 1);
+		p->n_flags++;
+	}
 	return (p->n_flags);
 }
 
