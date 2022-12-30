@@ -28,6 +28,7 @@ typedef struct s_printout
 	va_list		varg;
 	char		*format;
 	int			nb_written;
+	int			n_flags;
 }				t_printout;
 
 int	ft_printf(const char *format, ...);
@@ -52,6 +53,8 @@ int	ft_putnbr(int n, int base);
 
 int	main(void)
 {
+	int	i;
+
 	ft_printf("char %c\n", '&');
 	ft_printf("single %%\n");
 	ft_printf("string %s\n", "hey there");
@@ -62,12 +65,10 @@ int	main(void)
 	ft_printf("hexadecimal %x\n", 69);
 	ft_printf("uppercase hex %X\n", 69);
 	ft_printf("--\n");
-	int i = 0;
+	i = 0;
 	ft_printf("flag test #%d %.d\n", ++i, 69);
 	ft_printf("flag test #%d %04s\n", ++i, "string");
 	ft_printf("--\n");
-	//printf("digits test: %d\n", ft_count_digits(1, 10));
-	//printf("Power test: %d\n", ft_power(9, 4));
 	return (0);
 }
 
@@ -100,18 +101,19 @@ int	ft_printf(const char *format, ...)
 
 int	ft_print_format(t_printout *p)
 {
-	int	(*pf)(t_printout *p);
+	int		(*pf)(t_printout *p);
 
 	pf = NULL;
-	if (*(p->format + 1) == '%' || *(p->format + 1) == 'c')
-		pf = ft_print_cs;
-	else if (ft_isformat(*(p->format + 1)))
-		pf = ft_which_format(*(p->format + 1));
-	else if (*(p->format) != '%')
+	p->format++;
+	p->n_flags = 0;
+	if (ft_isflag(*(p->format)))
 		ft_parse_flags(p);
+	p->format += p->n_flags;
+	if (ft_isformat(*(p->format)))
+		pf = ft_which_format(*(p->format));
 	if (pf != NULL)
 		pf(p);
-	p->format++;
+	//p->format++;
 	return (0);
 }
 
@@ -124,6 +126,19 @@ int	(*ft_which_format(char c))(t_printout *p)
 	else if (c == 'd' || c == 'i' || c == 'u')
 		return (ft_print_diu);
 	return (0);
+}
+
+int	ft_parse_flags(t_printout *p)
+{
+	char	c;
+
+	p->n_flags = 0;
+	c = *(p->format);
+	if (c == '%')
+		write(1, &c, 1);
+	else
+		write(1, &c, 1);
+	return (p->n_flags);
 }
 
 int	ft_putnbr(int n, int base)
@@ -183,12 +198,12 @@ int	ft_power(int base, int exponent)
 
 int	ft_print_cs(t_printout *p)
 {
-	int		c;
-	char	*s;
 	char	f;
+	char	*s;
+	int		c;
 
 	s = NULL;
-	f = *(p->format + 1);
+	f = *(p->format);
 	if (f == '%')
 		write(1, &f, 1);
 	else if (f == 'c')
@@ -201,28 +216,32 @@ int	ft_print_cs(t_printout *p)
 		s = va_arg(p->varg, char *);
 		ft_putstr(s);
 	}
-	//write(1, (p->format + 1), 1);
 	return (0);
 }
 
 int	ft_print_diu(t_printout *p)
 {
-	if (*(p->format + 1) == 'd' || *(p->format + 1) == 'i')
-		ft_putnbr(-69, 10);
-	else
-		write(1, (p->format + 1), 1);
+	char		f;
+	int			di;
+	unsigned	u;
+
+	f = *(p->format);
+	if (f == 'd' || f == 'i')
+	{
+		di = va_arg(p->varg, int);
+		ft_putnbr(di, 10);
+	}
+	else if (f == 'u')
+	{
+		u = va_arg(p->varg, unsigned);
+		ft_putnbr(u, 10);
+	}
 	return (0);
 }
 
 int	ft_print_xp(t_printout *p)
 {
 	write(1, (p->format + 1), 1);
-	return (0);
-}
-
-int	ft_parse_flags(t_printout *p)
-{
-	(void) p;
 	return (0);
 }
 
