@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_digits.c                                  :+:      :+:    :+:   */
+/*   ft_parse_flags.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:25:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:25:39 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/01/07 18:00:12 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/01/07 18:00:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
+#include "ft_printf.h"
 
-int	ft_count_digits(long long int n, int base)
+int	ft_parse_flags(t_printout *p)
 {
-	int	n_digits;
+	char	c;
 
-	n_digits = 0;
-	while (n != 0)
+	p->n_flags = 0;
+	c = *(p->format);
+	if (c == '%')
 	{
-		n /= base;
-		n_digits++;
+		write(1, &c, 1);
 	}
-	return (n_digits);
-}
-
-int	ft_count_digits_u(unsigned long long n, unsigned int base)
-{
-	int	n_digits;
-
-	n_digits = 0;
-	while (n != 0)
+	else
 	{
-		n /= base;
-		n_digits++;
+		ft_printf("(flag: %c)", c);
+		p->n_flags++;
 	}
-	return (n_digits);
+	return (p->n_flags);
 }

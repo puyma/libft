@@ -5,77 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 11:32:37 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/12/28 11:32:37 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/01/07 16:27:26 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/01/07 16:27:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
+#include "ft_printf.h"
 
-#include <stdio.h>
-#include <limits.h>
-
-#define FORMATS "cspdiuxX"
-#define FLAGS "%-0.# +"
-
-// pf stands for pointer (to) function
-
-typedef struct s_printout
-{
-	va_list		varg;
-	char		*format;
-	int			nb_written;
-	int			n_flags;
-}				t_printout;
-
-int	ft_printf(const char *format, ...);
-
-int	ft_print_format(t_printout *p);
-int	(*ft_which_format(char c))(t_printout *p);
-
-int	ft_isformat(int c);
-int	ft_isflag(int c);
-int	ft_parse_flags(t_printout *p);
-
-int	ft_print_cs(t_printout *p);
-int	ft_print_diu(t_printout *p);
-int	ft_print_xp(t_printout *p);
-
-int	ft_putstr(const char *str);
-int	ft_count_digits(long int n, int base);
-unsigned long int	ft_power(int base, int exponent);
-int	ft_putnbr(long int n, int base);
-
-// percnt
-// use union for dealing with d, i or u.
-
-int	main(void)
-{
-	int	i;
-
-	ft_printf("char %c.\n", '&');
-	ft_printf("single %%.\n");
-	ft_printf("string %s.\n", "hey there");
-	ft_printf("decimal %d.\n", 69);
-	ft_printf("integer %i.\n", 69 * -1);
-	ft_printf("pointer %p.\n", &i);
-	ft_printf("unsigned %u.\n", UINT_MAX);
-	ft_printf("hexadecimal %x.\n", 69);
-	ft_printf("uppercase hex %X.\n", 69);
-	ft_printf("--\n"); 
-	i = 0;
-	ft_printf("flag test #%d %.d.\n", ++i, 69);
-	ft_printf("flag test #%d %04s.\n", ++i, "string");
-	ft_printf("flag test #%d %0%.\n", ++i);
-	ft_printf("flag test #%d %0.\n", ++i);
-	ft_printf("flag test #%d %+d.\n", ++i, 420);
-	ft_printf("--\n");
-	printf("p: %p.\n", &i);
-	return (0);
-}
+int			ft_printf(const char *format, ...);
+static int	ft_print_format(t_printout *p);
 
 int	ft_printf(const char *format, ...)
 {
@@ -86,7 +24,7 @@ int	ft_printf(const char *format, ...)
 		return (-1);
 	p->format = (char *) format;
 	p->nb_written = 0;
-	va_start(p->varg, format);
+	va_start(p->ap, format);
 	while (*(p->format) != '\0' && p->nb_written >= 0)
 	{
 		if (*(p->format) == '%')
@@ -99,189 +37,42 @@ int	ft_printf(const char *format, ...)
 			ft_putchar_fd(*(p->format), 1);
 		p->format++;
 	}
-	va_end(p->varg);
+	va_end(p->ap);
 	free(p);
-	return (0);
+	return (p->nb_written);
 }
 
-int	ft_print_format(t_printout *p)
-{
-	int		(*pf)(t_printout *p);
+// pf stands for pointer (to) function
 
-	pf = NULL;
-	p->format++;
-	p->n_flags = 0;
-	if (ft_isflag(*(p->format)))
-		ft_parse_flags(p);
-	p->format += p->n_flags;
-	if (ft_isformat(*(p->format)))
-		pf = ft_which_format(*(p->format));
-	if (pf != NULL)
-		pf(p);
-	return (0);
-}
-
-int	ft_print_xp(t_printout *p)
-{
-	//write(1, (p->format), 1);
-	unsigned int u = va_arg(p->varg, unsigned int);
-	ft_putnbr((long int) u, 16);
-	return (0);
-}
-
-int	(*ft_which_format(char c))(t_printout *p)
-{
-	if (c == '%' || c == 'c' || c == 's')
-		return (ft_print_cs);
-	else if (c == 'd' || c == 'i' || c == 'u')
-		return (ft_print_diu);
-	else if (c == 'x' || c == 'X' || c == 'p')
-		return (ft_print_xp);
-	return (0);
-}
-
-int	ft_parse_flags(t_printout *p)
-{
-	char	c;
-
-	p->n_flags = 0;
-	c = *(p->format);
-	if (c == '%')
-	{
-		write(1, &c, 1);
-	}
-	else
-	{
-		ft_printf("(flag: %c)", c);
-		//write(1, &c, 1);
-		p->n_flags++;
-	}
-	return (p->n_flags);
-}
-
-int	ft_putnbr(long int n, int base)
-{
-	long int	nn;
-	int			n_digits;
-	int			c;
-
-	nn = (long int) n;
-	n_digits = ft_count_digits(n, base);
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		nn *= -1;
-	}
-	while (n_digits > 0)
-	{
-		c = nn / (ft_power(base, n_digits - 1));
-		nn = nn - c * (ft_power(base, n_digits - 1));
-		c += '0';
-		write(1, &c, 1);
-		n_digits--;
-	}
-	return (0);
-}
-
-int	ft_count_digits(long int n, int base)
-{
-	int			n_digits;
-	long int	nn;
-
-	n_digits = 0;
-	nn = n;
-	if (n < 0)
-		nn *= -1;
-	else if (n == 0)
-		return (1);
-	while (nn > 0)
-	{
-		nn /= base;
-		n_digits++;
-	}
-	return (n_digits);
-}
-
-unsigned long int	ft_power(int base, int exponent)
-{
-	int	pow;
-
-	if (exponent == 0)
-		return (1);
-	pow = base;
-	while (--exponent > 0)
-		pow *= base;
-	return (pow);
-}
-
-int	ft_print_cs(t_printout *p)
+static int	ft_print_format(t_printout *p)
 {
 	char	f;
-	char	*s;
-	int		c;
 
-	s = NULL;
+	p->format++;
+	p->n_flags = 0;
+	if (ft_strchr(FLAGS, *(p->format)) != NULL)
+		ft_parse_flags(p);
+	p->format += p->n_flags;
 	f = *(p->format);
-	if (f == '%')
-		write(1, &f, 1);
-	else if (f == 'c')
+	if (ft_strchr(FORMATS, *(p->format)) != NULL)
 	{
-		c = va_arg(p->varg, int);
-		write(1, &c, 1);
-	}
-	else if (f == 's')
-	{
-		s = va_arg(p->varg, char *);
-		ft_putstr(s);
+		if (f == '%' || f == 'c' || f == 's')
+			ft_print_cs(p);
+		else if (f == 'd' || f == 'i' || f == 'u')
+			ft_print_diu(p);
+		else if (f == 'x' || f == 'X' || f == 'p')
+			ft_print_xp(p);
 	}
 	return (0);
 }
 
-int	ft_print_diu(t_printout *p)
-{
-	char			f;
-	int				di;
-	unsigned int	u;
-
-	f = *(p->format);
-	if (f == 'd' || f == 'i')
-	{
-		di = va_arg(p->varg, int);
-		ft_putnbr(di, 10);
-	}
-	else if (f == 'u')
-	{
-		u = va_arg(p->varg, unsigned int);
-		ft_putnbr((long int) u, 10);
-	}
-	return (0);
-}
-
-int	ft_isformat(int c)
-{
-	int	(*pf)(int);
-
-	pf = ft_isflag;
-	(void) pf;
-	if (ft_strchr(FORMATS, c) != NULL)
-		return (1);
-	return (0);
-}
-
-int	ft_isflag(int c)
-{
-	if (ft_strchr(FLAGS, c) != NULL)
-		return (1);
-	return (0);
-}
-
-int	ft_putstr(const char *str)
+int	ft_print(const char *data)
 {
 	char	*string;
 	int		n_written;
 	int		return_value;
 
-	string = (char *) str;
+	string = (char *) data;
 	n_written = 0;
 	return_value = 0;
 	while (*string != '\0')
