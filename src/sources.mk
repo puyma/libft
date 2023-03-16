@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/09/29 18:39:30 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/03/16 19:12:40 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ STRING_FILES	= string/ft_bzero.c \
 
 SRC_FILES		= $(CTYPE_FILES) \
 				  $(IO_FILES) \
-				  $(LST_FILES) \
 				  $(MATH_FILES) \
 				  $(STDLIB_FILES) \
 				  $(STRING_FILES)
+				  
+				  # $(LST_FILES) \
