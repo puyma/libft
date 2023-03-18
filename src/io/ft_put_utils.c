@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:27:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 16:27:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:18:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_putnbr(long long int n)
 	int				d;
 	int				pow;
 
-	(void) d;
 	counter = 0;
 	sign = 1;
 	n_digits = ft_count_digits(n, 10);
@@ -52,26 +51,18 @@ int	ft_putnbr(long long int n)
 int	ft_putnbr_u(unsigned long long n)
 {
 	int				counter;
-	unsigned int	n_digits;
-	unsigned int	sign;
+	int				n_digits;
 	unsigned int	d;
 	unsigned int	pow;
 
-	(void) d;
 	counter = 0;
-	sign = 1;
 	n_digits = ft_count_digits_u(n, 10);
 	if (n == 0)
 		return (ft_putchar(n + 48));
-	if (n < 0)
-	{
-		sign = -1;
-		counter += ft_putchar('-');
-	}
 	while (--n_digits >= 0)
 	{
 		pow = ft_pow(10, n_digits);
-		d = n / pow * sign;
+		d = n / pow;
 		counter += ft_putchar(d + 48);
 		n -= n / pow * pow;
 	}
