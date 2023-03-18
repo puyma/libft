@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:27:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/03/18 20:16:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:18:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_putnbr_u(unsigned long long n)
 	unsigned int	pow;
 
 	counter = 0;
-	sign = 1;
 	n_digits = ft_count_digits_u(n, 10);
 	if (n == 0)
 		return (ft_putchar(n + 48));
