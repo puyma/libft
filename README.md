@@ -1,27 +1,16 @@
 # Libft
-Implementació de `libc`. Source files ordenats més o menys en categories en funció de com es troben originalment en algunes implementacions de `libc`.
 
-![printf badge](https://img.shields.io/badge/printf-OK-green)
-![get next line badge](https://img.shields.io/badge/get%20next%20line-OK-green)
-![norminette compilant](https://img.shields.io/badge/norminette-OK-green)
+El codi font està ordenat en categories més o menys en funció de com es troben originalment en algunes implementacions de la `libc`.
 
-### Subject's versions
+Aquesta llibreria inclou `ft_printf`, una implementació de la funció que s'inclou en `<stdio.h>`. 
+També conté `get_next_line`, la qual llegeix el contingut d'un _file descriptor_ i en retorna una línia per cada execució.
 
-libft is version `15`, ft_printf is version `9.2`, get_next_line is version `10`.
+La versió dels subjectes son les següents: libft is version `15`, ft_printf is version `9.2`, get_next_line is version `10`.
 
-## Referències
-- [stdlib.guide](https://stdlib.guide)
+## Algunes referències
+- [IBM Standard library functions](https://www.ibm.com/docs/en/zos/2.3.0?topic=files-stdlibh-standard-library-functions)
 - [Apple Open Source Libc](https://github.com/apple-opensource/Libc)
 - [The Pitchfork Layout (PFL)](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs)
 <!-- https://git.42l.fr/pohl/libft -->
 <!-- https://git.42l.fr/jorun/superlibft -->
 <!-- https://github.com/thdelmas/Libft -->
-
-## Pendent
-- [makefile-that-places-object-files-into-an-alternate-directory-bin](https://codereview.stackexchange.com/questions/74136/makefile-that-places-object-files-into-an-alternate-directory-bin)
-- [makefile-learning](https://yuukidach.github.io/2019/08/05/makefile-learning/)
-- [building-from-different-source-folders-to-different-target-folders](https://riptutorial.com/makefile/example/21376/building-from-different-source-folders-to-different-target-folders)
-- [Managing projects with GNU Make - Chapter 02](https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch02.html#pattern_rules)
-- [Makefile tutorial](https://makefiletutorial.com)
-- [Makefile guide by @michaelfromyeg](https://michaelfromyeg.github.io/makefiles/#fancy-makefiles)
-- [Makefile guide by @mutantstargoat](http://nuclear.mutantstargoat.com/articles/make/)
