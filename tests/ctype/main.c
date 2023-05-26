@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:02:01 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 18:10:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:44:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 
 int	main(int argc, char **argv)
 {
+	char	c;
+
 	if (argc != 2)
 		return (0);
-	char c = *argv[1];
+	c = *argv[1];
 	printf ("c> %c (%d)", c, c);
 	if (ft_isalnum(c))
 		printf(", isalnum");
@@ -46,6 +48,5 @@ int	main(int argc, char **argv)
 		printf(", isupper");
 	if (ft_isxdigit(c))
 		printf(", isxdigit");
-	printf(".");
 	return (0);
 }
