@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/02 15:54:25 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/05/29 16:11:07 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/06/02 15:32:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft_stdlib.h"
 
-# include <stdlib.h> /* malloc, free, size_t */
-# include <paths.h> /* _PATH_DEFPATH */
+char	*ft_getenv(const char *name, const char **env)
+{
+	char	*variable;
+	int		i;
 
-
-# include "ctype/ft_ctype.h"
-# include "io/ft_io.h"
-# include "lst/ft_lists.h"
-# include "math/ft_math.h"
-# include "stdlib/ft_stdlib.h"
-# include "string/ft_string.h"
-# include "unistd/ft_unistd.h"
-
-#endif
+	i = 0;
+	variable = ft_strjoin(name, "=");
+	while (env[i] != NULL)
+	{
+		if (ft_strncmp(env[i], "PATH=", ft_strlen("PATH=")) == 0)
+		{
+			free(variable);
+			return ((char *) env[i]);
+		}
+		++i;
+	}
+	free(variable);
+	variable = NULL;
+	return (variable);
+}

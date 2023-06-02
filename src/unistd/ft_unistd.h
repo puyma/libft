@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_unistd.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/02 15:54:25 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/06/02 15:53:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_UNISTD_H
+# define FT_UNISTD_H
 
-# include <stdlib.h> /* malloc, free, size_t */
-# include <paths.h> /* _PATH_DEFPATH */
+# include <unistd.h> /* execve */
+# include "../stdlib/ft_stdlib.h"
+# include "../libft.h"
 
+int	ft_execvpe(const char *cmd, char const *args[], char const *envp[]);
 
-# include "ctype/ft_ctype.h"
-# include "io/ft_io.h"
-# include "lst/ft_lists.h"
-# include "math/ft_math.h"
-# include "stdlib/ft_stdlib.h"
-# include "string/ft_string.h"
-# include "unistd/ft_unistd.h"
-
-#endif
+#endif /* ft_unistd.h */
