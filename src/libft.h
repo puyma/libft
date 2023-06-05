@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/02 15:54:25 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:08:15 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h> /* malloc, free, size_t */
 # include <paths.h> /* _PATH_DEFPATH */
-
 
 # include "ctype/ft_ctype.h"
 # include "io/ft_io.h"
