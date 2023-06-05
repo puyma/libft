@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/06/02 15:45:35 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/06/05 12:32:27 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ STRING_FILES	:= 	string/ft_bzero.c \
 				 	string/ft_memset.c \
 				 	string/ft_split.c \
 				 	string/ft_strchr.c \
+					string/ft_strcmp.c \
 				 	string/ft_strdup.c \
 				 	string/ft_strndup.c \
 					string/ft_striteri.c \
