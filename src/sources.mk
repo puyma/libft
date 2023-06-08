@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/06/05 12:32:27 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/06/08 11:03:21 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,10 @@ CTYPE_FILES		:=	ctype/ft_isalnum.c \
 				 	ctype/ft_toupper.c
 
 IO_FILES		:=	io/ft_printf.c \
-				 	io/ft_put_utils.c \
-				 	io/ft_putchar_fd.c \
-				 	io/ft_putendl_fd.c \
-				 	io/ft_putnbr_fd.c \
-				 	io/ft_putstr_fd.c
+					io/ft_fprintf.c \
+				 	io/ft_put_utils.c
+				 	#io/ft_putchar_fd.c io/ft_putendl_fd.c \
+				 	#io/ft_putnbr_fd.c io/ft_putstr_fd.c
 
 LST_FILES		:=	lst/ft_lstadd_back.c \
 				 	lst/ft_lstadd_front.c \

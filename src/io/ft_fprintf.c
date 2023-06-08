@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_fprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/08 10:59:06 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/08 10:56:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_formats(const char *s, va_list *v)
+static int	ft_print_formats_fd(const char *s, va_list *v, int fd)
 {
-	const int		fd = STDOUT_FILENO;
 	unsigned int	counter;
 
 	counter = 0;
@@ -35,25 +34,27 @@ static int	ft_print_formats(const char *s, va_list *v)
 	return (counter);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_fprintf(FILE *file, const char *format, ...)
 {
 	static const char	formats[] = "cspdiuxX%";
 	int					counter;
 	va_list				args;
+	int					fd;
 
+	fd = file->_file;
 	counter = 0;
 	va_start(args, format);
 	while (*format != '\0')
 	{
 		if (*format == '%' && ft_strchr(formats, *(format + 1)) != 0)
 		{
-			counter += ft_print_formats(format + 1, &args);
+			counter += ft_print_formats_fd(format + 1, &args, fd);
 			format++;
 		}
 		else if (*format == '%' && ft_strchr(formats, *(format + 1) == 0))
-			ft_putstr_fd("invalid...", STDOUT_FILENO);
+			ft_putstr_fd("invalid...", fd);
 		else
-			counter += ft_putchar_fd(*format, STDOUT_FILENO);
+			counter += ft_putchar_fd(*format, fd);
 		format++;
 	}
 	va_end(args);
