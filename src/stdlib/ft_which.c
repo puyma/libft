@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:11:48 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/07 17:18:52 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/08 09:59:57 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static char	*ft_find_exec_in_path(const char *exec, char *path)
 		filename = ft_strjoin(temp, exec);
 		free(temp);
 		free(dir);
-		ft_printf("\033[0;34m%s\033[0m\n", filename);
 		if (access(filename, X_OK) == 0 && open(filename, O_DIRECTORY) == -1)
 			return (filename);
 		free(filename);
