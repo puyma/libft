@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/06/13 10:59:50 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/06/13 12:16:11 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ STDLIB_FILES	:=	stdlib/ft_atoi.c \
 				 	stdlib/ft_hex.c \
 				 	stdlib/ft_itoa.c \
 				 	stdlib/ft_getenv.c \
+					stdlib/ft_setenv.c \
 					stdlib/ft_unsetenv.c \
 					stdlib/ft_which.c
 
