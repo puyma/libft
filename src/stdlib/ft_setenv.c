@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:14:01 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/13 13:34:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:39:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	add(const char *name, const char *value, char ***envp)
 	free(var_name);
 	if (env_name == NULL)
 		return (EXIT_FAILURE);
-	new_envp = (char **) realloc(*envp, sizeof(char **) * (len + 2));
+	new_envp = (char **) ft_realloc(*envp, sizeof(char **) * (len + 2));
 	new_envp[len + 1] = env_name;
 	new_envp[len + 2] = NULL;
 	envp = &new_envp;
