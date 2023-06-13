@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/08 10:52:46 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/13 10:59:16 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_itoa(int n);
 int		ft_illtohex_fd(unsigned long long n, int c_format, int base, int fd);
 
 char	*ft_getenv(const char *name, const char **env);
+int		ft_unsetenv(const char *name, char **envp);
 char	*ft_which(const char *exec, char *path);
 
 #endif /* ft_stdlib.h */
