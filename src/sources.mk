@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/06/08 11:03:21 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/06/13 15:40:53 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,12 @@ CTYPE_FILES		:=	ctype/ft_isalnum.c \
 
 IO_FILES		:=	io/ft_printf.c \
 					io/ft_fprintf.c \
-				 	io/ft_put_utils.c
-				 	#io/ft_putchar_fd.c io/ft_putendl_fd.c \
-				 	#io/ft_putnbr_fd.c io/ft_putstr_fd.c
+				 	io/ft_put_utils.c \
+					io/ft_putendl_fd.c
+				 	#io/ft_putchar_fd.c
+					#io/ft_putendl_fd.c
+				 	#io/ft_putnbr_fd.c
+					#io/ft_putstr_fd.c
 
 LST_FILES		:=	lst/ft_lstadd_back.c \
 				 	lst/ft_lstadd_front.c \
@@ -50,6 +53,9 @@ STDLIB_FILES	:=	stdlib/ft_atoi.c \
 				 	stdlib/ft_hex.c \
 				 	stdlib/ft_itoa.c \
 				 	stdlib/ft_getenv.c \
+					stdlib/ft_setenv.c \
+					stdlib/ft_unsetenv.c \
+					stdlib/ft_realloc.c \
 					stdlib/ft_which.c
 
 STRING_FILES	:= 	string/ft_bzero.c \

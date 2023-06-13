@@ -6,14 +6,18 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:55:19 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/05/23 17:24:52 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:34:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_io.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd(10, fd);
+	int	nbytes;
+
+	nbytes = 0;
+	nbytes += ft_putstr_fd(s, fd);
+	nbytes += ft_putchar_fd(10, fd);
+	return (nbytes);
 }
