@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_flags.c                                   :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 18:00:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/01/07 18:00:12 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/07/22 20:55:28 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/07/22 20:55:28 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_parse_flags(t_printout *p)
+int	main(void)
 {
-	char	c;
+	int	og;
+	int	ft;
 
-	p->n_flags = 0;
-	c = *(p->format);
-	if (c == '%')
-	{
-		write(1, &c, 1);
-	}
-	else
-	{
-		ft_printf("(flag: %c)", c);
-		p->n_flags++;
-	}
-	return (p->n_flags);
+	og = printf("og %4s\n", "hey");
+	ft = ft_printf("ft %4s\n", "hey");
+	printf("og: %d, ft: %d --\n", og, ft);
+	return (0);
 }

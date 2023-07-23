@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_loop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 19:55:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/07/22 19:55:47 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/07/23 11:46:34 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/07/23 11:46:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_p_putstr_fd(char *s, int fd)
 {
-	int			nb;
-	int			fd;
-	va_list		vargs;
+	int		nb;
 
 	nb = 0;
-	fd = STDOUT_FILENO;
-	va_start(vargs, format);
-	ft_printf_loop(format, &vargs, &nb, fd);
-	va_end(vargs);
+	while (s != NULL && *s != '\0')
+	{
+		if (write(fd, s, 1) == -1)
+		{
+			nb = -1;
+			break ;
+		}
+		else
+			++nb;
+		++s;
+	}
+	return (nb);
+}
+
+int	ft_p_putchar_fd(int c, int fd)
+{
+	int		nb;
+
+	nb = 0;
+	nb = write(fd, &c, 1);
 	return (nb);
 }
