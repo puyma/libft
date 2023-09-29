@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:59:19 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 18:52:46 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:36:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	ft_isgraph(int c);
 int	ft_ispunct(int c);
 int	ft_isspace(int c);
 int	ft_isxdigit(int c);
+int	ft_ismeta(int c);
 
 #endif /* ft_ctype.h */
