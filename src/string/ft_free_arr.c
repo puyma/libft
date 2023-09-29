@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getenv.c                                        :+:      :+:    :+:   */
+/*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:11:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/07 16:57:00 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/07/25 13:13:59 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/07/25 13:16:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdlib.h"
+#include "ft_string.h"/* free */
 
-char	*ft_getenv(const char *name, const char **env)
+void	ft_free_arr(char **split)
 {
-	char	*variable;
-	size_t	variable_len;
-	int		i;
+	int	i;
 
+	if (split == NULL)
+		return ;
 	i = 0;
-	variable = ft_strjoin(name, "=");
-	variable_len = ft_strlen(variable);
-	while (env != NULL && env[i] != NULL)
+	while (split[i] != NULL)
 	{
-		if (ft_strncmp(env[i], variable, variable_len) == 0)
-		{
-			free(variable);
-			return ((char *) env[i] + variable_len);
-		}
+		free(split[i]);
 		++i;
 	}
-	free(variable);
-	variable = NULL;
-	return (variable);
+	free(split);
 }

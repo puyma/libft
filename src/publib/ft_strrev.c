@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/09/29 21:21:42 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/06/21 13:18:16 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/06/21 13:27:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_publib.h"
 
-# include <stdarg.h>
-# include <stdio.h> /* FILE * */
-# include "ft_io.h"
-# include "../stdlib/ft_stdlib.h"
-# include "../math/ft_math.h"
-
-typedef struct s_printout
+char	*ft_strrev(char *str)
 {
-	int	n_written;
-}		t_printout;
+	char	temp;
+	char	*start;
+	char	*end;
 
-int	ft_printf(const char *format, ...);
-int	ft_fprintf(FILE *file, const char *format, ...);
-
-#endif /* ft_printf_h */
+	if (str == NULL)
+		return (NULL);
+	start = str;
+	end = str + ft_strlen(str) - 1;
+	while (start < end)
+	{
+		temp = *end;
+		*end = *start;
+		*start = temp;
+		++start;
+		--end;
+	}
+	return (str);
+}

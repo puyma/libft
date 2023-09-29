@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getenv.c                                        :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:11:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/07 16:57:00 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/06/21 12:41:52 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/06/21 12:57:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdlib.h"
+#include "ft_string.h"
 
-char	*ft_getenv(const char *name, const char **env)
+char	*ft_strpbrk(const char *s, const char *accept)
 {
-	char	*variable;
-	size_t	variable_len;
-	int		i;
+	char	*ptr;
 
-	i = 0;
-	variable = ft_strjoin(name, "=");
-	variable_len = ft_strlen(variable);
-	while (env != NULL && env[i] != NULL)
+	ptr = NULL;
+	while (s != NULL && *s != '\0')
 	{
-		if (ft_strncmp(env[i], variable, variable_len) == 0)
+		if (ft_strchr(accept, *s) != NULL)
 		{
-			free(variable);
-			return ((char *) env[i] + variable_len);
+			ptr = (char *) s;
+			break ;
 		}
-		++i;
+		++s;
 	}
-	free(variable);
-	variable = NULL;
-	return (variable);
+	return (ptr);
 }

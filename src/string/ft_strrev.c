@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 15:39:40 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/13 20:47:31 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/08/07 14:03:31 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/08/07 14:03:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdlib.h"
+#include "ft_string.h"
 
-void	*ft_realloc(void *ptr, size_t original_size, size_t new_size)
+char	*ft_strrev(char *str)
 {
-	void	*realloc_mem;
+	char	c;
+	int		i;
+	int		j;
 
-	realloc_mem = malloc(new_size);
-	if (realloc_mem == NULL)
-		return (NULL);
-	if (ptr == NULL)
-		return (realloc_mem);
-	ft_memcpy(realloc_mem, ptr, original_size);
-	return (realloc_mem);
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
+	{
+		c = str[i];
+		str[i] = str[j];
+		str[j] = c;
+		++i;
+		--j;
+	}
+	return (str);
 }

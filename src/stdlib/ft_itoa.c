@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:02:23 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/09/29 18:56:51 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/09/29 21:23:38 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		ft_strlcpy(itoa, "-2147483648", 11 + 1);
 	else if (n < 0)
-	{	
+	{
 		itoa[0] = '-';
 		n *= -1;
 	}
@@ -54,6 +54,6 @@ char	*ft_itoa(int n)
 	{
 		itoa[count_digits] = (n % 10) + 48;
 		n /= 10;
-	}	
+	}
 	return (itoa);
 }
