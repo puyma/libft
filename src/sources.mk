@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/06/13 15:40:53 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/09/29 21:40:05 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ CTYPE_FILES		:=	ctype/ft_isalnum.c \
 				 	ctype/ft_isupper.c \
 				 	ctype/ft_isxdigit.c \
 				 	ctype/ft_tolower.c \
-				 	ctype/ft_toupper.c
+				 	ctype/ft_toupper.c \
+					ctype/ft_ismeta.c
 
 IO_FILES		:=	io/ft_printf.c \
 					io/ft_fprintf.c \
@@ -56,6 +57,7 @@ STDLIB_FILES	:=	stdlib/ft_atoi.c \
 					stdlib/ft_setenv.c \
 					stdlib/ft_unsetenv.c \
 					stdlib/ft_realloc.c \
+					stdlib/ft_realpath.c \
 					stdlib/ft_which.c
 
 STRING_FILES	:= 	string/ft_bzero.c \
@@ -71,6 +73,8 @@ STRING_FILES	:= 	string/ft_bzero.c \
 				 	string/ft_strndup.c \
 					string/ft_striteri.c \
 					string/ft_strjoin.c \
+					string/ft_strpjoin.c \
+					string/ft_strpjoin_replace.c \
 					string/ft_strlcat.c \
 					string/ft_strlcpy.c \
 				 	string/ft_strlen.c \
@@ -80,9 +84,17 @@ STRING_FILES	:= 	string/ft_bzero.c \
 					string/ft_strrchr.c \
 					string/ft_strtrim.c \
 				 	string/ft_substr.c \
+					string/ft_strspn.c \
+					string/ft_strcspn.c \
+					string/ft_strpbrk.c \
+					string/ft_strtok.c \
+					string/ft_strrev.c \
+					string/ft_free_arr.c \
 					string/get_next_line.c
 
 UNISTD_FILES	:=	unistd/ft_execvpe.c
+
+PUBLIB_FILES	:=	publib/ft_strrev.c
 
 SRC_FILES		= $(CTYPE_FILES) \
 				  $(IO_FILES) \
@@ -90,4 +102,5 @@ SRC_FILES		= $(CTYPE_FILES) \
 				  $(MATH_FILES) \
 				  $(STDLIB_FILES) \
 				  $(STRING_FILES) \
+				  $(PUBLIB_FILES) \
 				  $(UNISTD_FILES)
