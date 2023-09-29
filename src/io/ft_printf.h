@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/08 11:08:37 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/09/29 21:21:42 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-//# include "../libft.h"
+# include <stdio.h> /* FILE * */
 # include "ft_io.h"
 # include "../stdlib/ft_stdlib.h"
 # include "../math/ft_math.h"
-# include <stdio.h> /* FILE * */
 
 typedef struct s_printout
 {
