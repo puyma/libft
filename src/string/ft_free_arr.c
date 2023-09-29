@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 11:42:55 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/08/11 19:20:45 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/07/25 13:13:59 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/07/25 13:16:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include "ft_string.h"/* free */
 
-char	*ft_strndup(const char *s1, size_t n)
+void	ft_free_arr(char **split)
 {
-	size_t	i;
-	char	*str;
+	int	i;
 
+	if (split == NULL)
+		return ;
 	i = 0;
-	str = (char *) malloc((sizeof(char) * n) + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[i] != '\0' && i < n)
+	while (split[i] != NULL)
 	{
-		str[i] = s1[i];
+		free(split[i]);
 		++i;
 	}
-	str[i] = '\0';
-	return (str);
+	free(split);
 }

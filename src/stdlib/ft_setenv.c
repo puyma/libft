@@ -6,14 +6,14 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:14:01 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/13 20:48:24 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:16:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stdlib.h"
 
-static char	**add(const char *name, const char *value, char **envp);
-static int	overwrite(const char *name, const char *value, char **envp);
+static char	**ft_add(const char *name, const char *value, char **envp);
+static int	ft_overwrite(const char *name, const char *value, char **envp);
 
 int	ft_setenv(const char *name, const char *value, int owr, char ***envp)
 {
@@ -26,14 +26,13 @@ int	ft_setenv(const char *name, const char *value, int owr, char ***envp)
 		return (EXIT_SUCCESS);
 	env_name = ft_getenv(name, (const char **) *envp);
 	if (env_name == NULL)
-		*envp = add(name, value, *envp);
+		*envp = ft_add(name, value, *envp);
 	else if (owr != 0)
-		overwrite(name, value, *envp);
-	ft_printf("did okey\n");
+		ft_overwrite(name, value, *envp);
 	return (EXIT_SUCCESS);
 }
 
-static char	**add(const char *name, const char *value, char **envp)
+static char	**ft_add(const char *name, const char *value, char **envp)
 {
 	char	*var_name;
 	char	*env_name;
@@ -52,13 +51,13 @@ static char	**add(const char *name, const char *value, char **envp)
 		return (NULL);
 	new_envp = (char **) ft_realloc(temp, sizeof(char *) * len,
 			sizeof(char *) * (len + 2));
-	new_envp[len] = env_name;
+	new_envp[len] = ft_strdup(env_name);
 	new_envp[len + 1] = NULL;
-	new_envp[len + 2] = NULL;
+	free(env_name);
 	return (new_envp);
 }
 
-static int	overwrite(const char *name, const char *value, char **envp)
+static int	ft_overwrite(const char *name, const char *value, char **envp)
 {
 	int		i;
 	char	*var_name;

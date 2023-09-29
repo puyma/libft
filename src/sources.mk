@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/09/29 21:41:17 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/09/29 21:45:13 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,6 @@ STRING_FILES	:= 	string/ft_bzero.c \
 					string/ft_strspn.c \
 					string/ft_strcspn.c \
 					string/ft_strpbrk.c \
-					string/ft_strtok.c \
 					string/ft_strrev.c \
 					string/ft_free_arr.c \
 					string/get_next_line.c

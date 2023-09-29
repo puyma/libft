@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 11:42:55 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/08/11 19:20:45 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/08/07 14:03:31 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/08/07 14:03:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
 
-char	*ft_strndup(const char *s1, size_t n)
+char	*ft_strrev(char *str)
 {
-	size_t	i;
-	char	*str;
+	char	c;
+	int		i;
+	int		j;
 
 	i = 0;
-	str = (char *) malloc((sizeof(char) * n) + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[i] != '\0' && i < n)
+	j = ft_strlen(str) - 1;
+	while (i < j)
 	{
-		str[i] = s1[i];
+		c = str[i];
+		str[i] = str[j];
+		str[j] = c;
 		++i;
+		--j;
 	}
-	str[i] = '\0';
 	return (str);
 }
