@@ -21,7 +21,7 @@ char	*ft_getenv(const char *name, const char **env)
 	i = 0;
 	variable = ft_strjoin(name, "=");
 	variable_len = ft_strlen(variable);
-	while (env[i] != NULL)
+	while (env != NULL && env[i] != NULL)
 	{
 		if (ft_strncmp(env[i], variable, variable_len) == 0)
 		{
