@@ -6,18 +6,19 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2022/12/01 16:30:47 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/02 12:54:31 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:=	libft.a
 AUTHOR			?=	mpuig-ma
 
-CC				:=	gcc
-CFLAGS			:=	-Wall -Werror -Wextra -MMD
-RM				:=	rm -rf
 SRC_DIR			:=	src
 BUILD_DIR		:=	build
+CC				:=	gcc
+CFLAGS			:=	-Wall -Werror -Wextra -MMD
+CPPFLAGS		:=	-I$(SRC_DIR)
+RM				:=	rm -rf
 
 # SRC_FILES
 
@@ -32,7 +33,7 @@ DEPS	= $(addprefix $(BUILD_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 .PHONY: libft all clean fclean re
 
