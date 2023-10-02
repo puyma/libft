@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/02 12:54:31 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/02 16:44:29 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,20 @@ AUTHOR			?=	mpuig-ma
 
 SRC_DIR			:=	src
 BUILD_DIR		:=	build
+
+AR				:=	ar
 CC				:=	gcc
-CFLAGS			:=	-Wall -Werror -Wextra -MMD
-CPPFLAGS		:=	-I$(SRC_DIR)
-RM				:=	rm -rf
+LD				:=	ld
+LDFLAGS			:=	-L$(SRC_DIR)/libft -lft
+LDFLAGS			+=	-L$(SRC_DIR)/libmlx -lmlx
+
+CFLAGS			:=	-Wall -Werror -Wextra
+CPPFLAGS		:=	-MMD -O3 -iquote$(SRC_DIR)
+DFLAGS			:=	-g -fsanitize='address,undefined'
 
 # SRC_FILES
 
 include			$(SRC_DIR)/sources.mk
-
-# Color codes
-NOCOLOR			:= \033[0m
-GREEN			:= \033[0;32m
 
 OBJS	= $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(basename $(SRC_FILES))))
 DEPS	= $(addprefix $(BUILD_DIR)/, $(addsuffix .d, $(basename $(SRC_FILES))))
@@ -35,23 +37,23 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-.PHONY: libft all clean fclean re
+.PHONY: all debug clean fclean re
 
-libft: $(NAME)
 all: $(NAME)
-# https://unix.stackexchange.com/questions/347032/makefile-looping-files-with-pattern
 
--include $(DEPS)
+$(NAME): $(LIB) $(OBJS)
+	ar -crs $(NAME) $(OBJS)
 
-$(NAME): $(OBJS)
-	@ar -rcs $(NAME) $(OBJS)
-	@echo "Linked $(GREEN)$(NAME)$(NOCOLOR)"
+debug:: CFLAGS += $(DFLAGS)
+debug:: $(NAME)
 
 clean:
-	$(RM) $(BUILD_DIR)/
+	rm -r $(BUILD_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm $(NAME)
 
 re: fclean
 	$(MAKE)
+
+-include $(DEPS)
