@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/03 10:03:52 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/03 11:42:26 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,8 @@ AUTHOR			?=	mpuig-ma
 SRC_DIR			:=	src
 BUILD_DIR		:=	build
 
-AR				:=	ar
+AR				:=	/usr/bin/ar
 CC				:=	gcc
-LD				:=	ld
-LDFLAGS			:=	-L$(SRC_DIR)/libft -lft
-LDFLAGS			+=	-L$(SRC_DIR)/libmlx -lmlx
 
 CFLAGS			:=	-Wall -Werror -Wextra
 CPPFLAGS		:=	-MMD -O3 -iquote$(SRC_DIR)
@@ -41,8 +38,8 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJS)
-	ar -crs $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(AR) -crs $(NAME) $(OBJS)
 
 debug:: CFLAGS += $(DFLAGS)
 debug:: $(NAME)
