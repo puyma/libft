@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:18:56 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/09/29 21:45:13 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/11 11:18:49 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,11 +94,11 @@ UNISTD_FILES	:=	unistd/ft_execvpe.c
 
 PUBLIB_FILES	:=	publib/ft_strrev.c
 
-SRC_FILES		= $(CTYPE_FILES) \
-				  $(IO_FILES) \
-				  $(LST_FILES) \
-				  $(MATH_FILES) \
-				  $(STDLIB_FILES) \
-				  $(STRING_FILES) \
-				  $(PUBLIB_FILES) \
-				  $(UNISTD_FILES)
+SRC_FILES		=	$(CTYPE_FILES) \
+				  	$(IO_FILES) \
+				  	$(LST_FILES) \
+				  	$(MATH_FILES) \
+				  	$(STDLIB_FILES) \
+				  	$(STRING_FILES) \
+				  	$(PUBLIB_FILES) \
+				  	$(UNISTD_FILES)
