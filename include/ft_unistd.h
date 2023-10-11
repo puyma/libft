@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_publib.h                                        :+:      :+:    :+:   */
+/*   ft_unistd.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 13:16:48 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/21 13:23:00 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/11 11:07:27 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUBLIB_H
-# define FT_PUBLIB_H
+#ifndef FT_UNISTD_H
+# define FT_UNISTD_H
 
-# include "../libft.h"
+# include <paths.h>			// _PATH_DEFPATH
+# include <unistd.h>		// execve
 
-char	*ft_strrev(char *str);
+int	ft_execvpe(const char *cmd, char const *args[], char const *envp[]);
 
-#endif /* ft_publib.h */
+#endif /* ft_unistd.h */

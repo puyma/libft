@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_publib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/09/29 21:21:42 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/06/21 13:16:48 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/11 10:53:35 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PUBLIB_H
+# define FT_PUBLIB_H
 
-# include <stdarg.h>
-# include <stdio.h> /* FILE * */
-# include "ft_io.h"
-# include "../stdlib/ft_stdlib.h"
-# include "../math/ft_math.h"
+# include "ft_string.h"
 
-typedef struct s_printout
-{
-	int	n_written;
-}		t_printout;
+char	*ft_strrev(char *str);
 
-int	ft_printf(const char *format, ...);
-int	ft_fprintf(FILE *file, const char *format, ...);
-
-#endif /* ft_printf_h */
+#endif /* ft_publib.h */
