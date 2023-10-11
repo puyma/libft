@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unistd.h                                        :+:      :+:    :+:   */
+/*   ft_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/02 15:53:45 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:25:48 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/11 10:54:32 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UNISTD_H
-# define FT_UNISTD_H
+#ifndef FT_MATH_H
+# define FT_MATH_H
 
-# include <unistd.h> /* execve */
-# include "../stdlib/ft_stdlib.h"
-# include "../libft.h"
+long long int		ft_pow(int n, int exponent);
+unsigned long long	ft_pow_u(unsigned long long n, int exponent);
+int					ft_count_digits(long long int n, int base);
+int					ft_count_digits_u(unsigned long long n, unsigned int base);
 
-int	ft_execvpe(const char *cmd, char const *args[], char const *envp[]);
-
-#endif /* ft_unistd.h */
+#endif /* ft_math.h */

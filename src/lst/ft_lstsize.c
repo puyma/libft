@@ -6,15 +6,15 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:33:13 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/06/10 13:37:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:01:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lists.h"
 
-int	ft_lstsize(t_list *lst)
+size_t	ft_lstsize(t_list *lst)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (lst != NULL)

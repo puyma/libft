@@ -6,12 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:48 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/02 15:51:10 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:26:09 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_unistd.h"
-#include "../stdlib/ft_stdlib.h"
+#include "ft_stdlib.h"
+#include <paths.h>			// _PATH_DEFPATH
 
 int	ft_execvpe(const char *cmd, char const *args[], char const *envp[])
 {

@@ -6,12 +6,12 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:27:07 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/08 11:01:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:35:24 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_io.h"
-#include "../math/ft_math.h"
+#include "ft_math.h"
 
 int	ft_putchar_fd(char c, int fd)
 {

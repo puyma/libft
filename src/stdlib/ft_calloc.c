@@ -6,12 +6,12 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:34:17 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2022/06/13 13:50:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:36:09 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stdlib.h"
-#include "../string/ft_string.h"
+#include "ft_string.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

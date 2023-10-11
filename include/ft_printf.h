@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 18:13:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/09/29 21:18:18 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/11 11:08:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h>	/* malloc, free, size_t */
-# include <paths.h>		/* _PATH_DEFPATH */
+# include <stdarg.h>		// va_start, va_arg, va_end
+# include <stdio.h>			// FILE *
 
-# include "ctype/ft_ctype.h"
-# include "io/ft_io.h"
-# include "lst/ft_lists.h"
-# include "math/ft_math.h"
-# include "stdlib/ft_stdlib.h"
-# include "string/ft_string.h"
-# include "unistd/ft_unistd.h"
+# include "ft_io.h"
+# include "ft_stdlib.h"
+# include "ft_math.h"
 
-#endif
+typedef struct s_printout
+{
+	int		n_written;
+}			t_printout;
+
+int			ft_printf(const char *format, ...);
+int			ft_fprintf(FILE *file, const char *format, ...);
+
+#endif /* ft_printf_h */
