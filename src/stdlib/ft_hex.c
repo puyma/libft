@@ -6,13 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:25:59 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/06/08 11:05:01 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:36:17 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stdlib.h"
-#include "../math/ft_math.h"
-#include "../io/ft_io.h"
+#include "ft_math.h"
+#include "ft_io.h"
 
 static int	ft_set_case(int c_case)
 {
