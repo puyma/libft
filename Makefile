@@ -6,22 +6,22 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 19:08:59 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/03 11:42:26 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/11 11:21:03 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:=	libft.a
-AUTHOR			?=	mpuig-ma
 
 SRC_DIR			:=	src
+INC_DIR			:=	include
 BUILD_DIR		:=	build
 
-AR				:=	/usr/bin/ar
-CC				:=	gcc
+AR				?=	/usr/bin/ar
+CC				?=	gcc
 
 CFLAGS			:=	-Wall -Werror -Wextra
-CPPFLAGS		:=	-MMD -O3 -iquote$(SRC_DIR)
-DFLAGS			:=	-g -fsanitize='address,undefined'
+CPPFLAGS		:=	-MMD -O3 -iquote$(INC_DIR)
+DFLAGS			?=	-g -fsanitize='address,undefined'
 
 # SRC_FILES
 
