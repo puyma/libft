@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2024/03/04 13:07:31 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:31:29 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 
 # include "ft_string.h"
 # include "ft_math.h"
+# include <sys/cdefs.h>
 
+# if defined(__cplusplus)
 __BEGIN_DECLS extern "C"
+# else
+__BEGIN_DECLS
+# endif
 
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);

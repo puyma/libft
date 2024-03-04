@@ -6,14 +6,20 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:59:19 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2024/03/04 13:05:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:29:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_CTYPE_H
 # define FT_CTYPE_H
 
+# include <sys/cdefs.h>
+
+# if defined(__cplusplus)
 __BEGIN_DECLS extern "C"
+# else
+__BEGIN_DECLS
+# endif
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);

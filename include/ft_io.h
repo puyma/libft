@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:04:05 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2024/03/04 13:06:03 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:30:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 # define FT_IO_H
 
 # include <unistd.h>		// write
+# include <sys/cdefs.h>
 
+# if defined(__cplusplus)
 __BEGIN_DECLS extern "C"
+# else
+__BEGIN_DECLS
+# endif
 
 int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);

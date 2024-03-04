@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2024/03/04 13:06:56 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:31:16 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@
 # include "ft_stdlib.h"
 # include "ft_math.h"
 
+# include <sys/cdefs.h>
+
+# if defined(__cplusplus)
 __BEGIN_DECLS extern "C"
+# else
+__BEGIN_DECLS
+# endif
 
 typedef struct s_printout
 {

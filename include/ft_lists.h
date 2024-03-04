@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:58:15 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2024/03/04 13:06:22 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:30:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 # define FT_LISTS_H
 
 # include <stdlib.h>		// malloc, free, size_t
+# include <sys/cdefs.h>
 
+# if defined(__cplusplus)
 __BEGIN_DECLS extern "C"
+# else
+__BEGIN_DECLS
+# endif
 
 typedef struct s_list
 {
