@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 11:09:24 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:07:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # include "ft_string.h"
 # include "ft_math.h"
+
+__BEGIN_DECLS extern "C"
 
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
@@ -35,5 +37,7 @@ int		ft_unsetenv(const char *name, char **envp);
 
 char	*ft_realpath(const char *path, char *resolve_path);
 char	*ft_which(const char *exec, char *path);
+
+__END_DECLS
 
 #endif /* ft_stdlib.h */

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:05:04 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 11:04:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:04:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>		// malloc, free, size_t
 # include <unistd.h>		// read
 # include <sys/types.h>
+
+__BEGIN_DECLS extern "C"
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t len);
@@ -49,5 +51,7 @@ char	*ft_strpjoin_replace(char *s1, char *s2, size_t p);
 void	ft_free_arr(char **split);
 
 char	*get_next_line(int fd);
+
+__END_DECLS
 
 #endif /* ft_string.h */

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:02:41 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 11:20:02 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:07:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <unistd.h>		// execve
 
+__BEGIN_DECLS extern "C"
+
 int	ft_execvpe(const char *cmd, char const *args[], char const *envp[]);
+
+__END_DECLS
 
 #endif /* ft_unistd.h */

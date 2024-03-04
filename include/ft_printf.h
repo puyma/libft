@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:26:34 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 11:08:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:06:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include "ft_stdlib.h"
 # include "ft_math.h"
 
+__BEGIN_DECLS extern "C"
+
 typedef struct s_printout
 {
 	int		n_written;
@@ -27,5 +29,7 @@ typedef struct s_printout
 
 int			ft_printf(const char *format, ...);
 int			ft_fprintf(FILE *file, const char *format, ...);
+
+__END_DECLS
 
 #endif /* ft_printf_h */

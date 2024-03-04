@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:16:48 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 10:53:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:07:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "ft_string.h"
 
+__BEGIN_DECLS extern "C"
+
 char	*ft_strrev(char *str);
+
+__END_DECLS
 
 #endif /* ft_publib.h */

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:58:15 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 11:02:03 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:06:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_LISTS_H
 
 # include <stdlib.h>		// malloc, free, size_t
+
+__BEGIN_DECLS extern "C"
 
 typedef struct s_list
 {
@@ -30,5 +32,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+__END_DECLS
 
 #endif /* ft_lists.h */
